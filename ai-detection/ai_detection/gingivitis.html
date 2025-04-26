@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>牙龈炎 - 口腔疾病预测中心</title>
+    <link rel="stylesheet" href="css/disease-detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="content-body">
+        <div class="header">
+            <div class="header-left">
+                <span>牙龈炎</span>
+            </div>
+            <div class="header-right">
+                <button class="action-button" onclick="window.location.href='ai-diagnosis.html'">
+                    <i class="fas fa-robot"></i>
+                    AI智能诊断
+                </button>
+                <a href="index.html" class="back-button">
+                    <i class="fas fa-home"></i>
+                    返回首页
+                </a>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="sidebar">
+                <div class="sidebar-header">
+                    <i class="fas fa-list-ul"></i>
+                    相关口腔疾病
+                </div>
+                <div class="disease-nav">
+                    <a href="saprodontia.html" class="disease-link">
+                        <i class="fas fa-tooth"></i>
+                        龋齿
+                        <span class="risk-badge medium">中风险</span>
+                    </a>
+                    <a href="periodontitis.html" class="disease-link">
+                        <i class="fas fa-teeth"></i>
+                        牙周炎
+                        <span class="risk-badge high">高风险</span>
+                    </a>
+                    <a href="gingivitis.html" class="disease-link active">
+                        <i class="fas fa-tooth"></i>
+                        牙龈炎
+                        <span class="risk-badge low">低风险</span>
+                    </a>
+                    <a href="pulpitis.html" class="disease-link">
+                        <i class="fas fa-teeth-open"></i>
+                        牙髓炎
+                        <span class="risk-badge high">高风险</span>
+                    </a>
+                    <a href="OralUlcer.html" class="disease-link">
+                        <i class="fas fa-notes-medical"></i>
+                        口腔溃疡
+                        <span class="risk-badge low">低风险</span>
+                    </a>
+                    <a href="wtc.html" class="disease-link">
+                        <i class="fas fa-tooth"></i>
+                        智齿冲突
+                        <span class="risk-badge medium">中风险</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="main-content">
+                <div class="disease-info">
+                    <div class="quick-info">
+                        <div class="info-card">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <h3>危险程度</h3>
+                            <div class="risk-level low">低风险</div>
+                        </div>
+                        <div class="info-card">
+                            <i class="fas fa-user-md"></i>
+                            <h3>就医建议</h3>
+                            <p>出现牙龈红肿、出血、口臭等症状时</p>
+                        </div>
+                        <div class="info-card">
+                            <i class="fas fa-clock"></i>
+                            <h3>最佳就医时间</h3>
+                            <p>一旦发现牙龈有出血、红肿等异常表现时</p>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div id="three-container" style="width: 100%; height: 400px; margin-bottom: 20px; "></div>
+
+                        <h2><i class="fas fa-info-circle"></i>什么是牙龈炎?</h2>
+                        <p>牙龈炎(Gingivitis)是一种常见的口腔疾病，主要由于口腔内细菌大量繁殖和牙菌斑所产生的有害物质作用于牙龈引起的炎症。</p>
+                        
+                        <div class="key-points">
+                            <h3>关键特征：</h3>
+                            <ul>
+                                <li>牙龈红肿、出血，尤其是刷牙或咬硬物时</li>
+                                <li>牙龈由正常的粉红色变为鲜红或暗红色</li>
+                                <li>牙龈松软，缺乏弹性，表面光滑发亮</li>
+                            </ul>
+                        </div>
+
+                        <div class="section">
+                            <h2><i class="fas fa-list-ul"></i> 牙龈炎分类</h2>
+                            
+                            <div class="type-grid">
+                                <div class="type-card">
+                                    <i class="fas fa-angle-double-right"></i>
+                                    <h4>轻度牙龈炎</h4>
+                                    <p>牙龈缘和龈乳头轻微充血，牙龈边缘稍钝</p>
+                                </div>
+                                <div class="type-card">
+                                    <i class="fas fa-angle-double-right"></i>
+                                    <h4>中度牙龈炎</h4>
+                                    <p>牙龈明显红肿，增生症状常伴随出现，探诊时有出血</p>
+                                </div>
+                                <div class="type-card">
+                                    <i class="fas fa-angle-double-right"></i>
+                                    <h4>重度牙龈炎</h4>
+                                    <p>牙龈严重红肿，探诊有持续不断的出血，可能需要就医治疗</p>
+                                </div>    
+                            </div>
+
+                            <div class="image-section">
+                                <h3><i class="fas fa-image"></i> 图示说明：</h3>
+                                <div class="disease-images">
+                                    <div class="disease-image">
+                                        <div class="image-title">图1：牙龈炎发病机制示意图</div>
+                                        <img src="image/details/gingivitis/mechanism.png" alt="牙龈炎发病机制">
+                                        <div class="image-desc">上图展示了牙龈炎的发病机制</div>
+                                    </div>
+                                    <div class="disease-image">
+                                        <div class="image-title">图2：正常牙龈与牙龈炎对比图</div>
+                                        <img src="image/details/gingivitis/compare.png" alt="正常牙龈与牙龈炎对比">
+                                        <div class="image-desc">上图展示了正常牙龈与牙龈炎的对比</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <h2><i class="fas fa-exclamation-circle"></i> 主要症状</h2>
+                        
+                        <div class="symptoms-categories">
+                            <div class="category">
+                                <h3><i class="fas fa-eye"></i> 感觉症状</h3>
+                                <div class="symptoms-grid">
+                                    <div class="symptom-card">
+                                        <i class="fas fa-mountain"></i>
+                                        <h4>牙龈红肿</h4>
+                                        <p>牙龈红肿、刷牙出血、口臭</p>
+                                    </div>
+                                    <div class="symptom-card">
+                                        <i class="fas fa-book-reader"></i>
+                                        <h4>牙龈疼痛</h4>
+                                        <p>牙龈疼痛、退缩、持续性口臭</p>
+                                    </div>
+                                    <div class="symptom-card">
+                                        <i class="fas fa-compress-arrows-alt"></i>
+                                        <h4>牙龈出血</h4>
+                                        <p>牙龈自发性出血、牙周脓肿、严重口臭、牙齿松动</p>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+                            <div class="category">
+                                <h3><i class="fas fa-calendar-alt"></i> 发展特点</h3>
+                                <div class="progress-timeline">
+                                    <div class="timeline-item">
+                                        <div class="timeline-point"></div>
+                                        <div class="timeline-content">
+                                            <h4>初期</h4>
+                                            <p>牙龈轻微红肿和出血，症状不明显</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-point"></div>
+                                        <div class="timeline-content">
+                                            <h4>发展期</h4>
+                                            <p>牙龈红肿加重，可能出现增生，刷牙和探诊时出血更明显</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-point"></div>
+                                        <div class="timeline-content">
+                                            <h4>严重期</h4>
+                                            <p>牙龈严重红肿、牙周袋加深、牙齿松动、溢脓、脱落</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <h2><i class="fas fa-procedures"></i> 治疗方法</h2>
+                        <div class="treatment-methods">
+                            <div class="treatment-card">
+                                <div class="card-header">
+                                    <i class="fas fa-glasses"></i>
+                                    <h3>一般治疗</h3>
+                                </div>
+                                <div class="card-content">
+                                    <ul>
+                                        <li>改善口腔卫生</li>
+                                        <li>去除牙菌斑和牙石</li>
+                                        <li>使用正确的刷牙方法</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="treatment-card">
+                                <div class="card-header">
+                                    <i class="fas fa-laser"></i>
+                                    <h3>药物治疗</h3>
+                                </div>
+                                <div class="card-content">
+                                    <ul>
+                                        <li>使用抗菌含漱液或抗生素，控制炎症</li>
+                                        <li>服用止痛药缓解肿痛</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="treatment-card">
+                                <div class="card-header">
+                                    <i class="fas fa-eye"></i>
+                                    <h3>手术治疗</h3>
+                                </div>
+                                <div class="card-content">
+                                    <ul>
+                                        <li>龈上洁治术、龈下刮治术</li>
+                                        <li>牙龈切除术</li>
+                                        <li>牙龈成形术</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <h2><i class="fas fa-shield-alt"></i> 预防建议</h2>
+                        <div class="prevention-tips">
+                            <div class="tip">
+                                <i class="fas fa-clock"></i>
+                                <h4>口腔卫生</h4>
+                                <p>每天早晚刷牙，使用牙线清洁牙缝</p>
+                            </div>
+                            <div class="tip">
+                                <i class="fas fa-sun"></i>
+                                <h4>定期检查</h4>
+                                <p>定期进行口腔检查和洗牙，及时处理口腔问题</p>
+                            </div>
+                            <div class="tip">
+                                <i class="fas fa-book"></i>
+                                <h4>疾病控制</h4>
+                                <p>控制全身性疾病，如糖尿病，避免吸烟、酗酒等不良习惯</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="advice-sidebar">
+                <div class="advice-section">
+                    <div class="advice-header">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>日常建议</h3>
+                    </div>
+                    <div class="advice-list">
+                        <div class="advice-item">
+                            <i class="fas fa-ruler"></i>
+                            <div class="advice-content">
+                                <h4>清洁习惯</h4>
+                                <p>采用巴氏刷牙法、牙线辅助、漱口水配合</p>
+                            </div>
+                        </div>
+                        <div class="advice-item">
+                            <i class="fas fa-sun"></i>
+                            <div class="advice-content">
+                                <h4>饮食调整</h4>
+                                <p>吃抗炎食物、控糖减酸、营养补充</p>
+                            </div>
+                        </div>
+                        <div class="advice-item">
+                            <i class="fas fa-lightbulb"></i>
+                            <div class="advice-content">
+                                <h4>生活方式</h4>
+                                <p>戒烟戒酒、减压放松、定期检查</p>
+                            </div>
+                        </div>
+                        <div class="advice-item">
+                            <i class="fas fa-carrot"></i>
+                            <div class="advice-content">
+                                <h4>特殊情况应对</h4>
+                                <p>佩戴牙套者、孕期牙龈炎需咨询医生</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="advice-section">
+                    <div class="advice-header">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h3>注意事项</h3>
+                    </div>
+                    <div class="warning-list">
+                        <div class="warning-item">
+                            <i class="fas fa-ban"></i>
+                            <p>避免暴力刷牙</p>
+                        </div>
+                        <div class="warning-item">
+                            <i class="fas fa-ban"></i>
+                            <p>避免滥用牙签</p>
+                        </div>
+                        <div class="warning-item">
+                            <i class="fas fa-ban"></i>
+                            <p>避免忽视舌苔清洁</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="emergency-contact">
+                    <div class="advice-header">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>紧急联系</h3>
+                    </div>
+                    <div class="contact-info">
+                        <p><i class="fas fa-hospital-alt"></i> 口腔急诊: 120</p>
+                        <p><i class="fas fa-phone"></i> 咨询热线: 010-xxxxxxxx</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script type="importmap">
+{
+    "imports": {
+        "three": "https://unpkg.com/three@0.152.2/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.152.2/examples/jsm/"
+    }
+}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+window.addEventListener('DOMContentLoaded', function () {
+    const container = document.getElementById('three-container');
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color('#b3d8f7');
+
+    const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+    camera.position.set(0, 1.5, 2.5);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    container.appendChild(renderer.domElement);
+
+    // 使用正确的 OrbitControls 初始化方式
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+
+    const light = new THREE.HemisphereLight(0xffffff, 0x444444);
+    scene.add(light);
+    const dirLight = new THREE.DirectionalLight(0xffffff);
+    dirLight.position.set(3, 10, 10);
+    scene.add(dirLight);
+
+    const loader = new GLTFLoader();
+    loader.load('image/3d/gingivitis.glb', function (gltf) {
+        console.log('✅ 模型加载成功', gltf);
+        const model = gltf.scene;
+        model.scale.set(3, 3, 3);
+
+        const box = new THREE.Box3().setFromObject(model);
+        const center = box.getCenter(new THREE.Vector3());
+        model.position.sub(center);
+
+        scene.add(model);
+        const axesHelper = new THREE.AxesHelper(5);
+        scene.add(axesHelper);
+    }, 
+    function (xhr) {
+        console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+    },
+    function (error) {
+        console.error('❌ 模型加载失败:', error);
+        const geometry = new THREE.BoxGeometry(1, 1, 1);
+        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
+    });
+
+    function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+    }
+    animate();
+
+    window.addEventListener('resize', () => {
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.clientWidth, container.clientHeight);
+    });
+});
+</script>
+
+</body>
+</html> 

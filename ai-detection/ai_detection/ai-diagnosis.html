@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI口腔图像诊断 - 口腔疾病预测中心</title>
+    <link rel="stylesheet" href="css/disease-detail.css">
+    <link rel="stylesheet" href="css/ai-diagnosis.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .ai-consultation-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(12,26,63,0.9);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(12,26,63, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 1px solid rgba(41,151,228,0.2);
+        }
+
+        .ai-consultation-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(41,151,228, 0.4);
+            background: rgba(12,26,63,1);
+            border-color: rgba(41,151,228,0.4);
+        }
+
+        .ai-consultation-button i {
+            font-size: 24px;
+        }
+
+        .ai-chat-container {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 320px;
+            height: 500px;
+            background: rgba(12,26,63,0.95);
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+            display: none;
+            flex-direction: column;
+            z-index: 1000;
+            overflow: hidden;
+            border: 1px solid rgba(41,151,228,0.2);
+        }
+
+        .chat-header {
+            background: rgba(12,26,63,1);
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(41,151,228,0.2);
+        }
+
+        .chat-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .close-chat {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: rgba(12,26,63,0.95);
+        }
+
+        .message {
+            display: flex;
+            margin-bottom: 15px;
+            color: #bad0e2;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .ai-message {
+            padding-right: 20%;
+        }
+
+        .user-message {
+            padding-left: 20%;
+            justify-content: flex-end;
+            color: #ffffff;
+        }
+
+        .message-avatar {
+            width: 32px;
+            height: 32px;
+            background: rgba(41,151,228,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4dd0e1;
+            border: 1px solid rgba(41,151,228,0.3);
+        }
+
+        .message-avatar i {
+            font-size: 14px;
+        }
+
+        .user-message .message-avatar {
+            background: rgba(41,151,228,0.3);
+            color: white;
+        }
+
+        .message-content {
+            word-break: break-word;
+        }
+
+        .ai-message .message-content {
+            background: rgba(41,151,228,0.1);
+            color: #bad0e2;
+            border-radius: 15px 15px 15px 0;
+        }
+
+        .user-message .message-content {
+            background: rgba(41,151,228,0.2);
+            color: #ffffff;
+            border-radius: 15px 15px 0 15px;
+        }
+
+        .chat-input-area {
+            padding: 15px;
+            background: rgba(12,26,63,1);
+            border-top: 1px solid rgba(41,151,228,0.2);
+            display: flex;
+            gap: 10px;
+        }
+
+        #chatInput {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 20px;
+            background: rgba(41,151,228,0.1);
+            color: #ffffff;
+            font-size: 14px;
+            resize: none;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        #chatInput:focus {
+            background: rgba(41,151,228,0.15);
+        }
+
+        #chatInput::placeholder {
+            color: rgba(186,208,226,0.5);
+        }
+
+        .send-button {
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 20px;
+            background: rgba(41,151,228,0.2);
+            color: #4dd0e1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .send-button:hover {
+            background: rgba(41,151,228,0.3);
+            transform: scale(1.05);
+        }
+
+        .send-button i {
+            font-size: 16px;
+        }
+
+        /* 添加滚动条样式 */
+        .chat-messages::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .chat-messages::-webkit-scrollbar-track {
+            background: rgba(12,26,63,0.8);
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: rgba(41,151,228,0.3);
+            border-radius: 3px;
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb:hover {
+            background: rgba(41,151,228,0.5);
+        }
+
+        @media screen and (max-width: 768px) {
+            .ai-chat-container {
+                width: calc(100% - 30px);
+                right: 15px;
+                left: 15px;
+                bottom: 90px;
+            }
+
+            .ai-consultation-button {
+                right: 15px;
+                padding: 12px 16px;
+            }
+        }
+
+        /* 简化的导航图标样式 */
+        .side-icons {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(12,26,63,0.95);
+            padding: 15px 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 100;
+        }
+
+        .left-icons {
+            left: 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .right-icons {
+            right: 0;
+            border-radius: 12px 0 0 12px;
+        }
+
+        .icon-item {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4dd0e1;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .icon-item i {
+            font-size: 20px;
+        }
+
+        .icon-item:hover {
+            color: #2997e4;
+            transform: translateX(3px);
+        }
+
+        .right-icons .icon-item:hover {
+            transform: translateX(-3px);
+        }
+
+        @media screen and (max-width: 768px) {
+            .side-icons {
+                display: none;
+            }
+        }
+
+        /* 修改上传区域样式为单图上传 */
+        .upload-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .dental-upload-section {
+            width: 100%;
+            max-width: 600px;
+            background: rgba(12,26,63,0.05);
+            border-radius: 12px;
+            padding: 15px;
+            border: 1px solid rgba(41,151,228,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .dental-upload-section h3 {
+            color: #2997e4;
+            margin-bottom: 15px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dental-upload-section h3:before {
+            content: '\f5c9';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+        }
+
+        .upload-area {
+            min-height: 300px;
+            width: 100%;
+            max-width: 500px;
+            border: 2px dashed rgba(41,151,228,0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(12,26,63,0.05);
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 16/10;
+            margin: 0 auto;
+        }
+
+        .upload-area:hover {
+            border-color: #2997e4;
+            background: rgba(41,151,228,0.1);
+        }
+
+        .upload-area.dragover {
+            border-color: #2997e4;
+            background: rgba(41,151,228,0.15);
+        }
+
+        .upload-placeholder {
+            text-align: center;
+            color: #666;
+            padding: 20px;
+        }
+
+        .upload-placeholder i {
+            font-size: 40px;
+            color: #2997e4;
+            margin-bottom: 10px;
+        }
+
+        .upload-placeholder p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        .upload-placeholder span {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .image-preview {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(12,26,63,0.95);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .image-preview img {
+            max-width: 90%;
+            max-height: 90%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            display: block;
+            margin: auto;
+        }
+
+        /* 修改诊断结果区域样式 */
+        .dental-results {
+            display: flex;
+            justify-content: center;  /* 水平居中 */
+            margin: 20px auto;  /* 上下margin为20px，左右自动 */
+            max-width: 600px;  /* 限制最大宽度 */
+        }
+
+        .disease-probabilities {
+            width: 100%;  /* 使用全宽 */
+            padding: 20px;  /* 添加内边距 */
+            background: rgba(12,26,63,0.05);  /* 添加背景色 */
+            border-radius: 12px;  /* 圆角 */
+            border: 1px solid rgba(41,151,228,0.1);  /* 边框 */
+        }
+
+        /* 调整概率条的样式 */
+        .probability-bar {
+            margin: 15px 0;  /* 调整上下间距 */
+            padding: 10px 15px;  /* 增加内边距 */
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .left-eye-results,
+        .right-eye-results {
+            flex: 1;
+            background: rgba(12,26,63,0.05);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(41,151,228,0.1);
+        }
+
+        .left-eye-results h4,
+        .right-eye-results h4 {
+            color: #2997e4;
+            margin-bottom: 15px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .left-eye-results h4:before,
+        .right-eye-results h4:before {
+            content: '\f06e';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+        }
+
+        /* 响应式布局 */
+        @media screen and (max-width: 768px) {
+            .upload-container {
+                flex-direction: column;
+            }
+
+            .eye-results {
+                flex-direction: column;
+            }
+        }
+
+        /* 添加导出按钮样式 */
+        .result-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .retest-button,
+        .export-button {
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .retest-button {
+            background: rgba(41,151,228,0.1);
+            color: #2997e4;
+        }
+
+        .export-button {
+            background: #2997e4;
+            color: white;
+        }
+
+        .retest-button:hover {
+            background: rgba(41,151,228,0.2);
+        }
+
+        .export-button:hover {
+            background: #2080c7;
+            transform: translateY(-1px);
+        }
+
+        .retest-button i,
+        .export-button i {
+            font-size: 16px;
+        }
+
+        .eye-image img {
+            max-width: 150px;
+            border: 1px solid #e1e6f0;
+            border-radius: 4px;
+            padding: 5px;
+        }
+
+        .image-section {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            gap: 20px;
+        }
+
+        .eye-image {
+            text-align: center;
+            flex: 1;
+            max-width: 160px;
+            margin: 0 auto;
+        }
+
+        .eye-image-caption {
+            margin-top: 5px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .probability-track {
+            height: 8px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .probability-fill {
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+        .probability-value {
+            font-size: 12px;
+            margin-top: 4px;
+            text-align: right;
+            font-weight: bold;
+        }
+
+        /* 添加打字动画样式 */
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+            margin-top: 4px;
+        }
+
+        .typing-indicator span {
+            width: 6px;
+            height: 6px;
+            background: #4dd0e1;
+            border-radius: 50%;
+            animation: typing 1s infinite;
+        }
+
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- 左侧图标 -->
+    <div class="side-icons left-icons">
+        <div class="icon-item">
+            <i class="fas fa-dna"></i>
+        </div>
+        <div class="icon-item">
+            <i class="fas fa-eye"></i>
+        </div>
+        <div class="icon-item">
+            <i class="fas fa-flask"></i>
+        </div>
+        <div class="icon-item">
+            <i class="fas fa-user-md"></i>
+        </div>
+        <div class="icon-item">
+            <i class="fas fa-pills"></i>
+        </div>
+    </div>
+
+    <!-- 右侧图标 -->
+    <div class="side-icons right-icons">
+        <div class="icon-item">
+            <i class="fas fa-cog"></i>
+        </div>
+        <div class="icon-item">
+            <i class="fas fa-bell"></i>
+        </div>
+        <div class="icon-item">
+            <i class="fas fa-question-circle"></i>
+        </div>
+        <div class="icon-item">
+            <i class="fas fa-comment-dots"></i>
+        </div>
+    </div>
+
+    <div class="content-body">
+        <div class="header">
+            <div class="header-left">
+                <span>AI口腔图像诊断</span>
+            </div>
+            <a href="index.html" class="back-button">返回首页</a>
+        </div>
+
+        <div class="diagnosis-container">
+            <div class="diagnosis-intro">
+                <div class="intro-card">
+                    <i class="fas fa-microscope"></i>
+                    <h3>专业AI分析</h3>
+                    <p>基于深度学习模型，对口腔图像进行智能分析</p>
+                </div>
+                <div class="intro-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>隐私保护</h3>
+                    <p>所有图像数据经加密处理，确保您的隐私安全</p>
+                </div>
+                <div class="intro-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>快速诊断</h3>
+                    <p>秒级响应，为您提供及时的诊断建议</p>
+                </div>
+            </div>
+
+            <div class="example-section">
+                <h3><i class="fas fa-info-circle"></i> 拍摄示例</h3>
+                <div class="example-container">
+                    <div class="example-item">
+                        <div class="example-image correct">
+                            <div class="image-title">正确示例1</div>
+                            <img src="image/examples/correct1.png" alt="正确的拍摄示例1">
+                            <div class="example-desc">
+                                <i class="fas fa-check-circle"></i>
+                                <span>光线充足,角度正确</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="example-item">
+                        <div class="example-image correct">
+                            <div class="image-title">正确示例2</div>
+                            <img src="image/examples/correct2.png" alt="正确的拍摄示例2">
+                            <div class="example-desc">
+                                <i class="fas fa-check-circle"></i>
+                                <span>清晰度高,位置合适</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="example-item">
+                        <div class="example-image wrong">
+                            <div class="image-title">错误示例1</div>
+                            <img src="image/examples/wrong1.png" alt="错误的拍摄示例1">
+                            <div class="example-desc">
+                                <i class="fas fa-times-circle"></i>
+                                <span>光线不足,模糊</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="example-item">
+                        <div class="example-image wrong">
+                            <div class="image-title">错误示例2</div>
+                            <img src="image/examples/wrong2.png" alt="错误的拍摄示例2">
+                            <div class="example-desc">
+                                <i class="fas fa-times-circle"></i>
+                                <span>口腔情况不清晰</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="upload-section">
+                <h2>图像上传</h2>
+                <div class="upload-tips">
+                    <h4>拍摄建议：</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 选择光线充足的环境</li>
+                        <li><i class="fas fa-check"></i> 保持手机稳定,避免晃动</li>
+                        <li><i class="fas fa-check"></i> 确保口腔区域清晰可见</li>
+                        <li><i class="fas fa-check"></i> 避免使用闪光灯</li>
+                    </ul>
+                </div>
+                <div class="upload-container">
+                    <div class="dental-upload-section">
+                        <h3>口腔图像</h3>
+                        <div class="upload-area" id="dentalUploadArea" ondrop="handleDrop(event, 'dental')" ondragover="handleDragOver(event)">
+                            <input type="file" id="dentalInput" accept="image/*" onchange="handleImageUpload(event, 'dental')" hidden>
+                            <div class="upload-placeholder" id="dentalPlaceholder">
+                                <i class="fas fa-tooth"></i>
+                                <p>点击或拖拽上传口腔图像</p>
+                                <span>支持 jpg、png 格式</span>
+                            </div>
+                            <div class="image-preview" id="dentalPreview" style="display: none;">
+                                <img id="dentalPreviewImg" src="" alt="口腔预览图">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="preview-actions" id="previewActions" style="display: none;">
+                <button onclick="removeImages()" class="remove-btn">
+                    <i class="fas fa-times"></i> 删除
+                </button>
+                <button onclick="startDiagnosis()" class="analyze-btn" disabled id="analyzeBtn">
+                    <i class="fas fa-microscope"></i> 开始分析
+                </button>
+            </div>
+
+            <div class="result-section" id="resultSection" style="display: none;">
+                <div class="result-header">
+                    <h3><i class="fas fa-chart-bar"></i> 诊断结果</h3>
+                </div>
+                <div class="result-content">
+                    <div class="dental-results">
+                        <div class="disease-probabilities" id="dentalProbabilities">
+                            <!-- 口腔预测结果将在这里显示 -->
+                        </div>
+                    </div>
+                    <div class="result-actions">
+                        <button onclick="resetDiagnosis()" class="retest-button">
+                            <i class="fas fa-redo"></i> 重新检测
+                        </button>
+                        <button onclick="exportReport()" class="export-button">
+                            <i class="fas fa-file-export"></i> 导出报告
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="diagnosis-history" id="diagnosisHistory" style="display: none;">
+                <h3><i class="fas fa-history"></i> 诊断历史</h3>
+                <div class="history-list" id="historyList">
+                    <!-- 历史记录将在这里显示 -->
+                </div>
+            </div>
+
+            <!-- 添加眼部健康知识区域 -->
+            <div class="health-knowledge">
+                <div class="knowledge-section">
+                    <div class="section-header">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>每日护眼小贴士</span>
+                        <span class="update-tag">每日更新</span>
+                    </div>
+                    <div class="tips-list">
+                        <div class="tip-item">
+                            <i class="fas fa-clock"></i>
+                            <span>建议每餐后用清水漱口</span>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-laptop"></i>
+                            <span>控制甜食摄入频率，减少牙齿腐蚀风险</span>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-carrot"></i>
+                            <span>使用含氟牙膏，每日至少刷牙两次，每次 3 分钟</span>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-eye"></i>
+                            <span>定期使用牙线清洁牙缝，去除食物残渣</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 添加研究进展区域 -->
+                <div class="research-section">
+                    <div class="section-header">
+                        <i class="fas fa-microscope"></i>
+                        <span>最新研究进展</span>
+                    </div>
+                    <div class="research-list">
+                        <div class="research-item">
+                            <span class="date">2024-03</span>
+                            <span class="title">新型生物材料在牙齿修复中的应用研究</span>
+                        </div>
+                        <div class="research-item">
+                            <span class="date">2024-02</span>
+                            <span class="title">基于人工智能的口腔疾病早期诊断模型进展</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 添加预防保健知识区域 -->
+                <div class="prevention-section">
+                    <div class="section-header">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>预防保健知识</span>
+                    </div>
+                    <div class="prevention-content">
+                        <div class="prevention-item">
+                            <h4>正确刷牙</h4>
+                            <p>采用巴氏刷牙法，选择软毛牙刷，确保牙齿各面清洁到位</p>
+                        </div>
+                        <div class="prevention-item">
+                            <h4>饮食注意</h4>
+                            <p>均衡饮食，多摄入富含钙、磷等营养素的食物，增强牙齿硬度</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI问诊按钮 -->
+    <div class="ai-consultation-button" id="aiConsultationButton">
+        <i class="fas fa-robot"></i>
+        <span>AI问诊</span>
+    </div>
+
+    <!-- AI聊天窗口 -->
+    <div class="ai-chat-container" id="aiChatContainer">
+        <div class="chat-header">
+            <div class="chat-title">
+                <i class="fas fa-robot"></i>
+                <span>AI牙科助手</span>
+            </div>
+            <button class="close-chat" id="closeChat">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <!-- 消息将在这里动态添加 -->
+        </div>
+        <div class="chat-input-area">
+            <textarea id="chatInput" placeholder="请输入您的问题..." rows="1"></textarea>
+            <button class="send-button" id="sendButton">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="js/ai-diagnosis.js"></script>
+    <script>
+    // 等待页面加载完成后执行
+    document.addEventListener('DOMContentLoaded', function() {
+        const uploadArea = document.getElementById('dentalUploadArea');
+        const imageInput = document.getElementById('dentalInput');
+        const previewImg = document.getElementById('dentalPreviewImg');
+        const placeholder = document.getElementById('dentalPlaceholder');
+        const preview = document.getElementById('dentalPreview');
+        const analyzeBtn = document.getElementById('analyzeBtn');
+        const previewActions = document.getElementById('previewActions');
+
+        let uploadedFile = null;
+
+        // 点击上传区域触发文件选择
+        uploadArea.addEventListener('click', () => {
+            imageInput.click();
+        });
+
+        // 拖拽悬停效果
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+
+        // 拖拽释放上传
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            const file = e.dataTransfer.files[0];
+            if (file && file.type.startsWith('image/')) {
+                handleImage(file);
+            }
+        });
+
+        // 文件选择事件
+        imageInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                handleImage(file);
+            }
+        });
+
+        // 处理图片上传与预览
+        function handleImage(file) {
+            // 检查文件大小（限制为5MB）
+            const maxSize = 5 * 1024 * 1024; // 5MB
+            if (file.size > maxSize) {
+                showError('文件大小不能超过5MB');
+                return;
+            }
+
+            // 检查文件类型
+            const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+            if (!allowedTypes.includes(file.type.toLowerCase())) {
+                showError('只支持 JPG、PNG 格式的图片');
+                return;
+            }
+
+            uploadedFile = file;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                previewImg.src = e.target.result;
+                placeholder.style.display = 'none';
+                preview.style.display = 'block';
+                previewActions.style.display = 'flex';
+                analyzeBtn.disabled = false;
+            }
+            reader.onerror = function() {
+                showError('文件读取失败，请重试');
+            }
+            reader.readAsDataURL(file);
+        }
+
+        // 删除图片
+        function removeImages() {
+            imageInput.value = '';
+            previewImg.src = '';
+            placeholder.style.display = 'block';
+            preview.style.display = 'none';
+            previewActions.style.display = 'none';
+            uploadedFile = null;
+        }
+
+        // 导出报告
+        async function exportReport() {
+            if (!latestResults) {
+                showError('请先进行检测才能导出报告');
+                return;
+            }
+
+            try {
+                const response = await fetch('http://127.0.0.1:5000/export_word', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        detection_results: latestResults
+                    })
+                });
+
+                const result = await response.json();
+                if (response.ok) {
+                    // 创建一个隐藏的链接并点击它来下载报告
+                    const link = document.createElement('a');
+                    link.href = result.report_url;
+                    link.download = 'dental_report.docx';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                } else {
+                    showError('导出报告失败：' + result.error);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showError('导出报告过程中发生错误');
+            }
+        }
+
+        // 存储最新的检测结果
+        let latestResults = null;
+
+        // 开始诊断
+        async function startDiagnosis() {
+            if (!uploadedFile) {
+                showError('请先上传口腔图像');
+                return;
+            }
+
+            showLoading();
+
+            const formData = new FormData();
+            formData.append('file', uploadedFile);
+
+            try {
+                const response = await fetch('http://127.0.0.1:5000/predict', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+                hideLoading();
+
+                if (data.error) {
+                    showError(data.error);
+                } else {
+                    latestResults = data;  // 存储检测结果
+                    displayResults(data);
+                }
+            } catch (error) {
+                hideLoading();
+                showError('预测失败，请重试');
+                console.error('Error:', error);
+            }
+        }
+
+        // 显示诊断结果
+        function displayResults(data) {
+            const resultSection = document.getElementById('resultSection');
+            const probabilitiesContainer = document.getElementById('dentalProbabilities');
+            
+            probabilitiesContainer.innerHTML = '';
+
+            // 疾病名称的中文映射
+            const diseaseNames = {
+                'calculus': '牙结石',
+                'caries': '龋齿',
+                'gingivitis': '牙龈炎',
+                'hypodontia': '牙齿缺失',
+                'tooth_discolation': '牙齿变色',
+                'ulcer': '溃疡'
+            };
+
+            // 创建结果标题
+            const titleDiv = document.createElement('div');
+            titleDiv.innerHTML = `
+                <h3 style="color: #2997e4; margin-bottom: 20px;">
+                    <i class="fas fa-chart-bar"></i> 检测到 ${data.num_detections} 个潜在问题
+                </h3>
+            `;
+            probabilitiesContainer.appendChild(titleDiv);
+
+            // 添加每种疾病的概率条
+            Object.entries(data.diseases).forEach(([disease, probability]) => {
+                const probabilityBar = document.createElement('div');
+                probabilityBar.className = 'probability-bar';
+                
+                // 根据概率设置颜色
+                const color = probability > 0.7 ? '#ff4d4f' : 
+                            probability > 0.4 ? '#faad14' : '#52c41a';
+                
+                probabilityBar.innerHTML = `
+                    <div class="disease-name">${diseaseNames[disease]}</div>
+                    <div class="probability-track">
+                        <div class="probability-fill" style="width: ${probability * 100}%; background-color: ${color};"></div>
+                    </div>
+                    <div class="probability-value">${(probability * 100).toFixed(1)}%</div>
+                `;
+                probabilitiesContainer.appendChild(probabilityBar);
+            });
+
+            // 添加建议信息
+            const hasIssues = Object.values(data.diseases).some(prob => prob > 0.5);
+            const adviceDiv = document.createElement('div');
+            adviceDiv.style.marginTop = '20px';
+            adviceDiv.style.padding = '15px';
+            adviceDiv.style.backgroundColor = 'rgba(41,151,228,0.1)';
+            adviceDiv.style.borderRadius = '8px';
+            
+            if (hasIssues) {
+                adviceDiv.innerHTML = `
+                    <p style="color: #ff4d4f;"><i class="fas fa-exclamation-circle"></i> 建议：检测到潜在的口腔健康问题，建议及时就医检查。</p>
+                `;
+            } else {
+                adviceDiv.innerHTML = `
+                    <p style="color: #52c41a;"><i class="fas fa-check-circle"></i> 建议：未发现明显问题，建议继续保持良好的口腔卫生习惯。</p>
+                `;
+            }
+            probabilitiesContainer.appendChild(adviceDiv);
+
+            resultSection.style.display = 'block';
+        }
+
+        // 显示加载中
+        function showLoading() {
+            const loading = document.createElement('div');
+            loading.id = 'loadingIndicator';
+            loading.className = 'loading-indicator';
+            loading.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 正在分析...';
+            document.body.appendChild(loading);
+        }
+
+        // 隐藏加载中
+        function hideLoading() {
+            const loading = document.getElementById('loadingIndicator');
+            if (loading) loading.remove();
+        }
+
+        // 显示错误提示
+        function showError(message) {
+            const error = document.createElement('div');
+            error.className = 'error-message';
+            error.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
+            document.body.appendChild(error);
+            setTimeout(() => error.remove(), 3000);
+        }
+
+        // 重置诊断
+        function resetDiagnosis() {
+            removeImages();
+            document.querySelector('.upload-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 绑定按钮事件
+        document.querySelector('.remove-btn').addEventListener('click', removeImages);
+        document.querySelector('.analyze-btn').addEventListener('click', startDiagnosis);
+        document.querySelector('.retest-button').addEventListener('click', resetDiagnosis);
+
+        // AI聊天相关功能
+        const aiConsultationButton = document.getElementById('aiConsultationButton');
+        const aiChatContainer = document.getElementById('aiChatContainer');
+        const closeChat = document.getElementById('closeChat');
+        const chatInput = document.getElementById('chatInput');
+        const sendButton = document.getElementById('sendButton');
+        const chatMessages = document.getElementById('chatMessages');
+
+        // AI问诊按钮点击事件
+        if (aiConsultationButton) {
+            aiConsultationButton.addEventListener('click', function() {
+                aiChatContainer.style.display = 'flex';
+                // 清空现有消息
+                chatMessages.innerHTML = '';
+                // 添加欢迎消息
+                addWelcomeMessages();
+            });
+        }
+
+        // 关闭聊天窗口
+        if (closeChat) {
+            closeChat.addEventListener('click', function() {
+                aiChatContainer.style.display = 'none';
+            });
+        }
+
+        // 发送按钮点击事件
+        if (sendButton) {
+            sendButton.addEventListener('click', sendMessage);
+        }
+
+        // 输入框回车事件
+        if (chatInput) {
+            chatInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendMessage();
+                }
+            });
+        }
+
+        // 添加欢迎消息
+        function addWelcomeMessages() {
+            const welcomeMessage = '您好！我是您的AI牙科助手。我可以帮您解答口腔健康问题，提供口腔保健建议，分析症状，并给出专业的就医建议。请问您有什么需要咨询的吗？';
+            addMessage(welcomeMessage, 'ai');
+        }
+
+        // 添加消息到聊天界面
+        function addMessage(content, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}-message`;
+            
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'message-content';
+            contentDiv.textContent = content;
+            
+            messageDiv.appendChild(contentDiv);
+            chatMessages.appendChild(messageDiv);
+            
+            // 滚动到底部
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // 添加等待消息
+        function addLoadingMessage() {
+            const messageId = 'loading-' + Date.now();
+            const loadingDiv = document.createElement('div');
+            loadingDiv.className = 'message ai-message';
+            loadingDiv.id = messageId;
+            
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'message-content';
+            contentDiv.innerHTML = '<div class="typing-indicator"><span></span><span></span><span></span></div>';
+            
+            loadingDiv.appendChild(contentDiv);
+            chatMessages.appendChild(loadingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            return messageId;
+        }
+
+        // 移除等待消息
+        function removeLoadingMessage(messageId) {
+            const loadingMessage = document.getElementById(messageId);
+            if (loadingMessage) {
+                loadingMessage.remove();
+            }
+        }
+
+        // 发送消息
+        async function sendMessage() {
+            const message = chatInput.value.trim();
+            if (!message) return;
+            
+            // 添加用户消息
+            addMessage(message, 'user');
+            chatInput.value = '';
+            
+            // 添加等待消息
+            const loadingId = addLoadingMessage();
+            
+            try {
+                const response = await fetch('http://127.0.0.1:5000/chat_ollama', {
+                      method: 'POST',
+                      headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                      },
+                      body: JSON.stringify({
+                        prompt: message  // ← 关键修改
+                      })
+                });
+                
+                if (!response.ok) {
+                    throw new Error('网络请求失败');
+                }
+                
+                const data = await response.json();
+                removeLoadingMessage(loadingId);
+                
+                if (data.error) {
+                    addMessage('抱歉，发生了错误：' + data.error, 'ai');
+                } else {
+                    addMessage(data.response, 'ai');
+                }
+                
+            } catch (error) {
+                console.error('Error:', error);
+                removeLoadingMessage(loadingId);
+                addMessage('抱歉，发生了错误。请稍后重试。', 'ai');
+            }
+        }
+    });
+    </script>
+</body>
+</html> 

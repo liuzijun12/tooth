@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>牙周炎 - 口腔疾病预测中心</title>
+    <link rel="stylesheet" href="css/disease-detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="content-body">
+        <div class="header">
+            <div class="header-left">
+                <span>牙周炎</span>
+            </div>
+            <div class="header-right">
+                <button class="action-button" onclick="window.location.href='ai-diagnosis.html'">
+                    <i class="fas fa-robot"></i>
+                    AI智能诊断
+                </button>
+                <a href="index.html" class="back-button">
+                    <i class="fas fa-home"></i>
+                    返回首页
+                </a>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="sidebar">
+                <div class="sidebar-header">
+                    <i class="fas fa-list-ul"></i>
+                    相关口腔疾病
+                </div>
+                <div class="disease-nav">
+                    <a href="saprodontia.html" class="disease-link">
+                        <i class="fas fa-tooth"></i>
+                        龋齿
+                        <span class="risk-badge medium">中风险</span>
+                    </a>
+                    <a href="periodontitis.html" class="disease-link active">
+                        <i class="fas fa-teeth"></i>
+                        牙周炎
+                        <span class="risk-badge high">高风险</span>
+                    </a>
+                    <a href="gingivitis.html" class="disease-link">
+                        <i class="fas fa-tooth"></i>
+                        牙龈炎
+                        <span class="risk-badge low">低风险</span>
+                    </a>
+                    <a href="pulpitis.html" class="disease-link">
+                        <i class="fas fa-teeth-open"></i>
+                        牙髓炎
+                        <span class="risk-badge high">高风险</span>
+                    </a>
+                    <a href="OralUlcer.html" class="disease-link">
+                        <i class="fas fa-notes-medical"></i>
+                        口腔溃疡
+                        <span class="risk-badge low">低风险</span>
+                    </a>
+                    <a href="wtc.html" class="disease-link">
+                        <i class="fas fa-tooth"></i>
+                        智齿冲突
+                        <span class="risk-badge medium">中风险</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 主要内容区域 -->
+            <div class="main-content">
+                <div class="disease-info">
+                    <!-- 快速信息卡片 -->
+                    <div class="quick-info">
+                        <div class="info-card">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <h3>危险程度</h3>
+                            <div class="risk-level medium">高风险</div>
+                        </div>
+                        <div class="info-card">
+                            <i class="fas fa-user-md"></i>
+                            <h3>就医建议</h3>
+                            <p>及时就医检查</p>
+                        </div>
+                        <div class="info-card">
+                            <i class="fas fa-clock"></i>
+                            <h3>最佳就医时间</h3>
+                            <p>发现牙龈异常、口腔异味、牙齿敏感或咬合不适及时就医</p>
+                        </div>
+                    </div>
+
+                    <!-- 3D模型展示区域 -->
+                    <div id="three-container" style="width: 100%; height: 400px; margin-bottom: 20px;"></div>
+
+                    <!-- 疾病介绍 -->
+                    <div class="section">
+                        <h2><i class="fas fa-info-circle"></i> 什么是牙周炎</h2>
+                        <p>牙周炎是一种常见的慢性口腔疾病，主要由牙菌斑、牙石等刺激引起牙周组织（包括牙龈、牙周膜、牙槽骨和牙骨质）的慢性炎症。</p>
+                        
+                        <div class="key-points">
+                            <h3>关键特征：</h3>
+                            <ul>
+                                <li>牙槽骨吸收、牙周袋形成、牙龈萎缩</li>
+                                <li>牙龈萎缩、颜色苍白或暗红</li>
+                                <li>牙槽骨发生进行性吸收，牙齿松动</li>
+                                <li>真性牙周袋形成</li>
+                            </ul>
+                        </div>
+
+                        <div class="disease-types">
+                            <h3><i class="fas fa-list-ul"></i> 牙周炎分类</h3>
+                            <div class="type-grid">
+                                <div class="type-card">
+                                    <div class="type-header">
+                                        <i class="fas fa-user-clock"></i>
+                                        <h4>菌斑相关性牙周炎</h4>
+                                    </div>
+                                    <p>由牙菌斑感染引发，是最常见的类型，占牙周炎病例的绝大多数</p>
+                                </div>
+                                <div class="type-card">
+                                    <div class="type-header">
+                                        <i class="fas fa-baby"></i>
+                                        <h4>非菌斑性牙周炎</h4>
+                                    </div>
+                                    <p>由全身疾病、遗传缺陷或创伤等因素引起，临床较少见</p>
+                                </div>
+                                <div class="type-card">
+                                    <div class="type-header">
+                                        <i class="fas fa-hammer"></i>
+                                        <h4>牙周-牙髓联合病变</h4>
+                                    </div>
+                                    <p>牙周组织与牙髓（牙神经）通过根尖孔、侧支根管等解剖通道相互感染，表现为牙周袋深、牙髓活力异常</p>
+                                </div>
+                                <div class="type-card">
+                                    <div class="type-header">
+                                        <i class="fas fa-pills"></i>
+                                        <h4>儿童牙周炎</h4>
+                                    </div>
+                                    <p>发生于乳牙列或混合牙列期儿童，多与口腔卫生差、全身疾病（如粒细胞缺乏症）相关</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="image-section">
+                            <h3>图示说明：</h3>
+                            <div class="disease-images">
+                                <div class="disease-image">
+                                    <div class="image-title">图1：牙周炎发病机制示意图</div>
+                                    <img src="image/details/periodontitis/mechanism.png" alt="白内障发病机制">
+                                    <div class="image-desc">上图展示了牙周炎的发病机制</div>
+                                </div>
+                                <div class="disease-image">
+                                    <div class="image-title">图2：正常牙齿与牙周炎对比图</div>
+                                    <img src="image/details/periodontitis/compare.png" alt="正常眼睛与白内障对比">
+                                    <div class="image-desc">上图展示了正常牙齿与牙周炎的对比</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 症状 -->
+                    <div class="section">
+                        <h2><i class="fas fa-exclamation-circle"></i> 主要症状</h2>
+                        
+                        <div class="symptoms-categories">
+                            <div class="category">
+                                <h3><i class="fas fa-eye"></i> 可视症状</h3>
+                                <div class="symptoms-grid">
+                                    <div class="symptom-card">
+                                        <i class="fas fa-low-vision"></i>
+                                        <h4>牙龈炎症</h4>
+                                        <p>牙龈红肿、牙龈出血、牙龈肿胀</p>
+                                    </div>
+                                    <div class="symptom-card">
+                                        <i class="fas fa-clone"></i>
+                                        <h4>牙周袋形成</h4>
+                                        <p>形成深于 3 毫米的牙周袋，轻压牙龈可见牙周袋内有脓性分泌物溢出</p>
+                                    </div>
+                                    <div class="symptom-card">
+                                        <i class="fas fa-sun"></i>
+                                        <h4>牙槽骨吸收与牙齿松动</h4>
+                                        <p>牙齿移位或松动、牙缝变大牙齿脱落</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="category">
+                                <h3><i class="fas fa-palette"></i> 其他伴随症状</h3>
+                                <div class="symptoms-grid">
+                                    <div class="symptom-card">
+                                        <i class="fas fa-tint"></i>
+                                        <h4>口臭</h4>
+                                        <p>牙周袋内细菌代谢产物及脓性分泌物会导致口腔异味，且刷牙后难以缓解</p>
+                                    </div>
+                                    <div class="symptom-card">
+                                        <i class="fas fa-adjust"></i>
+                                        <h4>咬合无力或疼痛</h4>
+                                        <p>牙齿松动后，咀嚼时可能感到无力或疼痛，甚至出现持续性钝痛</p>
+                                    </div>
+                                    <div class="symptom-card">
+                                        <i class="fas fa-adjust"></i>
+                                        <h4>牙龈退缩</h4>
+                                        <p>炎症长期刺激可导致牙龈向牙根方向退缩，暴露牙颈部或牙根，引起牙齿敏感（遇冷、热、酸刺激时疼痛）</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="category">
+                                <h3><i class="fas fa-calendar-alt"></i> 进展特点</h3>
+                                <div class="progress-timeline">
+                                    <div class="timeline-item">
+                                        <div class="timeline-point"></div>
+                                        <div class="timeline-content">
+                                            <h4>早期</h4>
+                                            <p>牙龈炎症为主，形成牙周袋，可能有轻微牙龈退缩</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-point"></div>
+                                        <div class="timeline-content">
+                                            <h4>中期</h4>
+                                            <p>牙龈炎症加重，牙周袋加深（深度达4-6毫米），牙齿出现轻度至中度松动</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-point"></div>
+                                        <div class="timeline-content">
+                                            <h4>晚期</h4>
+                                            <p>牙龈及牙周组织严重破坏，牙齿明显松动或脱落，可能伴随全身健康问题</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 治疗方法 -->
+                    <div class="section">
+                        <h2><i class="fas fa-procedures"></i> 治疗方法</h2>
+                        <div class="treatment-methods">
+                            <div class="treatment-card">
+                                <div class="card-header">
+                                    <i class="fas fa-hospital-user"></i>
+                                    <h3>基础治疗</h3>
+                                </div>
+                                <div class="card-content">
+                                    <ul>
+                                        <li>龈上洁治</li>
+                                        <li>龈下刮治和根面平整</li>
+                                        <li>口腔卫生指导</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="treatment-card">
+                                <div class="card-header">
+                                    <i class="fas fa-stethoscope"></i>
+                                    <h3>药物治疗</h3>
+                                </div>
+                                <div class="card-content">
+                                    <ul>
+                                        <li>局部用药（牙周袋内冲洗、局部上药）</li>
+                                        <li>全身用药（口服抗生素）</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="treatment-card">
+                                <div class="card-header">
+                                    <i class="fas fa-hand-holding-medical"></i>
+                                    <h3>手术治疗</h3>
+                                </div>
+                                <div class="card-content">
+                                    <ul>
+                                        <li>牙周翻瓣术</li>
+                                        <li>引导组织再生术</li>
+                                        <li>牙龈成形术 / 牙龈切除术</li>
+                                        <li> 牙种植术（晚期拔牙后）</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="treatment-card">
+                                <div class="card-header">
+                                    <i class="fas fa-hand-holding-medical"></i>
+                                    <h3>正畸治疗（辅助功能恢复）</h3>
+                                </div>
+                                <div class="card-content">
+                                    <ul>
+                                        <li>适用情况：中期或稳定期牙周炎患者，存在牙齿移位、咬合紊乱（如前牙扇形外展）</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 预防建议 -->
+                    <div class="section">
+                        <h2><i class="fas fa-shield-alt"></i> 预防建议</h2>
+                        <div class="prevention-tips">
+                            <div class="tip">
+                                <i class="fas fa-sun"></i>
+                                <h4>做好口腔清洁</h4>
+                                <p>正确刷牙、彻底清洁牙缝、定期专业清洁（清除牙结石）</p>
+                            </div>
+                            <div class="tip">
+                                <i class="fas fa-apple-alt"></i>
+                                <h4>均衡饮食</h4>
+                                <p>补充钙、维生素C和D，减少糖分和精细食物</p>
+                            </div>
+                            <div class="tip">
+                                <i class="fas fa-calendar-check"></i>
+                                <h4>定期检查</h4>
+                                <p>每6-12个月进行一次全面口腔检查</p>
+                            </div>
+                            <div class="tip">
+                                <i class="fas fa-smoking-ban"></i>
+                                <h4>戒烟限酒</h4>
+                                <p>保持健康生活方式</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 推荐医院 -->
+                    <div class="section">
+                        <h2><i class="fas fa-hospital"></i> 推荐医院</h2>
+                        <div class="hospital-list">
+                            <div class="hospital-card">
+                                <h3>北京同仁医院</h3>
+                                <div class="hospital-info">
+                                    <p><i class="fas fa-map-marker-alt"></i> 北京市东城区东交民巷1号</p>
+                                    <p><i class="fas fa-phone"></i> 010-58266699</p>
+                                    <div class="rating">
+                                        <span>专科评分：</span>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧建议栏 -->
+            <div class="advice-sidebar">
+                <div class="advice-section">
+                    <div class="advice-header">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>日常建议</h3>
+                    </div>
+                    <div class="advice-list">
+                        <div class="advice-item">
+                            <i class="fas fa-eye"></i>
+                            <div class="advice-content">
+                                <h4>口腔清洁</h4>
+                                <p>正确刷牙，用牙线等工具辅助清洁、定期专业清洁</p>
+                            </div>
+                        </div>
+                        <div class="advice-item">
+                            <i class="fas fa-utensils"></i>
+                            <div class="advice-content">
+                                <h4>健康饮食</h4>
+                                <p>多吃富含钙、Omega-3 脂肪酸、维生素C和D的食物，控糖限酸</p>
+                            </div>
+                        </div>
+                        <div class="advice-item">
+                            <i class="fas fa-bed"></i>
+                            <div class="advice-content">
+                                <h4>戒酒限烟</h4>
+                                <p>保证血管健康及菌群平衡</p>
+                            </div>
+                        </div>
+                        <div class="advice-item">
+                            <i class="fas fa-walking"></i>
+                            <div class="advice-content">
+                                <h4>避免不良习惯</h4>
+                                <p>避免咬硬物、单侧咀嚼、用嘴呼吸</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="advice-section">
+                    <div class="advice-header">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h3>注意事项</h3>
+                    </div>
+                    <div class="warning-list">
+                        <div class="warning-item">
+                            <i class="fas fa-ban"></i>
+                            <p>避免 "无效清洁"</p>
+                        </div>
+                        <div class="warning-item">
+                            <i class="fas fa-ban"></i>
+                            <p>远离 "促炎因素"</p>
+                        </div>
+                        <div class="warning-item">
+                            <i class="fas fa-ban"></i>
+                            <p>警惕 "关联疾病"</p>
+                        </div>
+                        <div class="warning-item">
+                            <i class="fas fa-ban"></i>
+                            <p>避免忽视早期信号，拖延治疗</p>
+                        </div>
+                        <div class="warning-item">
+                            <i class="fas fa-ban"></i>
+                            <p>避免盲目相信偏方</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="emergency-contact">
+                    <div class="advice-header">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>紧急联系</h3>
+                    </div>
+                    <div class="contact-info">
+                        <p><i class="fas fa-hospital-alt"></i> 眼科急诊: 120</p>
+                        <p><i class="fas fa-phone"></i> 咨询热线: 010-xxxxxxxx</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 添加平滑滚动效果
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.152.2/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.152.2/examples/jsm/"
+        }
+    }
+    </script>
+
+    <script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+    window.addEventListener('DOMContentLoaded', function () {
+        const container = document.getElementById('three-container');
+        if (!container) return;
+
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color('#b3d8f7');
+
+        const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+        camera.position.set(0, 1.5, 2.5);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        container.appendChild(renderer.domElement);
+
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+
+        const light = new THREE.HemisphereLight(0xffffff, 0x444444);
+        scene.add(light);
+        const dirLight = new THREE.DirectionalLight(0xffffff);
+        dirLight.position.set(3, 10, 10);
+        scene.add(dirLight);
+
+        const loader = new GLTFLoader();
+        loader.load('image/3d/periodontitis.glb', function (gltf) {
+            const model = gltf.scene;
+            model.scale.set(3, 3, 3);
+            const box = new THREE.Box3().setFromObject(model);
+            const center = box.getCenter(new THREE.Vector3());
+            model.position.sub(center);
+            scene.add(model);
+            const axesHelper = new THREE.AxesHelper(5);
+            scene.add(axesHelper);
+        }, 
+        function (xhr) {
+            console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+        },
+        function (error) {
+            console.error('❌ 模型加载失败:', error);
+            const geometry = new THREE.BoxGeometry(1, 1, 1);
+            const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+            const cube = new THREE.Mesh(geometry, material);
+            scene.add(cube);
+        });
+
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.clientWidth, container.clientHeight);
+        });
+    });
+    </script>
+</body>
+</html> 

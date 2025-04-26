@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>口腔疾病的检测与预防</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/ai-diagnosis.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/iconfont.css">
+</head>
+<body>
+    <!-- 添加浮层内容区域 -->
+    <div class="floating-panels">
+        <div class="panel-container" id="medicalRecords" style="display: none;">
+            <div class="panel-wrapper">
+                <div class="panel-header">
+                    <div class="header-left">
+                        <i class="fas fa-file-medical"></i>
+                        <span>我的病例</span>
+                    </div>
+                    <div class="header-right">
+                        <button class="close-panel" onclick="hidePanel('medicalRecords')">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="panel-content">
+                    <div class="empty-state">
+                        <i class="fas fa-file-medical"></i>
+                        <h3>暂无病例记录</h3>
+                        <p>您还没有进行过任何检测，请先进行口腔疾病检测。</p>
+                        <button class="start-check-btn">
+                            <i class="fas fa-plus-circle"></i>
+                            开始检测
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-container" id="checkHistory" style="display: none;">
+            <div class="panel-wrapper">
+                <div class="panel-header">
+                    <div class="header-left">
+                        <i class="fas fa-history"></i>
+                        <span>检查记录</span>
+                    </div>
+                    <div class="header-right">
+                        <button class="close-panel" onclick="hidePanel('checkHistory')">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="panel-content">
+                    <div class="empty-state">
+                        <i class="fas fa-history"></i>
+                        <h3>暂无检查记录</h3>
+                        <p>您还没有进行过任何检查，请先进行口腔疾病检测。</p>
+                        <button class="start-check-btn">
+                            <i class="fas fa-plus-circle"></i>
+                            开始检测
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-container" id="notifications" style="display: none;">
+            <div class="panel-wrapper">
+                <div class="panel-header">
+                    <div class="header-left">
+                        <i class="fas fa-bell"></i>
+                        <span>消息通知</span>
+                    </div>
+                    <div class="header-right">
+                        <button class="close-panel" onclick="hidePanel('notifications')">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="panel-content">
+                    <div class="notifications-list">
+                        <div class="notification-item">
+                            <div class="notification-icon">
+                                <i class="fas fa-hand-sparkles"></i>
+                            </div>
+                            <div class="notification-content">
+                                <div class="notification-header">
+                                    <div class="notification-title">欢迎使用口腔疾病预测中心</div>
+                                    <div class="notification-time">刚刚</div>
+                                </div>
+                                <div class="notification-text">
+                                    欢迎您使用我们的智能口腔疾病预测系统。我们将为您提供专业的口腔健康检测服务。
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="notification-item">
+                            <div class="notification-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <div class="notification-content">
+                                <div class="notification-header">
+                                    <div class="notification-title">使用小贴士</div>
+                                    <div class="notification-time">刚刚</div>
+                                </div>
+                                <div class="notification-text">
+                                    点击右下角的"开始检测"按钮，即可开始您的口腔健康检测之旅。
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="notification-item">
+                            <div class="notification-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="notification-content">
+                                <div class="notification-header">
+                                    <div class="notification-title">隐私保护提醒</div>
+                                    <div class="notification-time">刚刚</div>
+                                </div>
+                                <div class="notification-text">
+                                    我们采用先进的加密技术，确保您的个人信息和检测数据安全。
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-body">
+        <div class="header">
+            <div class="header-left">
+                <span>口腔疾病预测中心</span>
+            </div>
+            <div class="header-time">
+                <span id="time"></span>
+                <div class="user-profile">
+                    <div class="avatar">
+                        <i class="iconfont icon-user"></i>
+                        <span>admin</span>
+                    </div>
+                    <div class="dropdown-menu">
+                        <a href="javascript:void(0)" class="menu-item" onclick="showPanel('medicalRecords', event)">
+                            <i class="fas fa-file-medical"></i>
+                            <span>我的病例</span>
+                        </a>
+                        <a href="javascript:void(0)" class="menu-item" onclick="showPanel('checkHistory', event)">
+                            <i class="fas fa-history"></i>
+                            <span>检查记录</span>
+                        </a>
+                        <a href="javascript:void(0)" class="menu-item" onclick="showPanel('notifications', event)">
+                            <i class="fas fa-bell"></i>
+                            <span>消息通知</span>
+                        </a>
+                        <a href="javascript:void(0)" class="menu-item logout" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>退出登录</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="content-con">
+                <div class="left-body">
+                    <div class="left-top public-bg">
+                        <div class="public-title">重点口腔检测疾病</div>
+                        <div class="top-body">
+                            <div class="top-left">
+                                <div class="top-left-title disease-card">
+                                    <a href="saprodontia.html" class="disease-link">
+                                        <h6>龋齿</h6>
+                                        <div class="disease-img">
+                                            <img src="image/diseases/saprodontia.png" alt="青光眼图片">
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="top-right">
+                                <div class="top-left-title disease-card">
+                                    <a href="periodontitis.html" class="disease-link">
+                                        <h6>牙周炎</h6>
+                                        <div class="disease-img">
+                                            <img src="image/diseases/periodontitis.png" alt="白内障图片">
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="top-left">
+                                <div class="top-left-title disease-card">
+                                    <a href="gingivitis.html" class="disease-link">
+                                        <h6>牙龈炎</h6>
+                                        <div class="disease-img">
+                                            <img src="image/diseases/gingivitis.png" alt="近视图片">
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="top-right">
+                                <div class="top-left-title disease-card">
+                                    <a href="pulpitis.html" class="disease-link">
+                                        <h6>牙髓炎</h6>
+                                        <div class="disease-img">
+                                            <img src="image/diseases/pulpitis.png" alt="干眼病图片">
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="top-left">
+                                <div class="top-left-title disease-card">
+                                    <a href="wtc.html" class="disease-link">
+                                        <h6>智齿冲突</h6>
+                                        <div class="disease-img">
+                                            <img src="image/diseases/wtc.png" alt="黄斑变性图片">
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="top-right">
+                                <div class="top-left-title disease-card">
+                                    <a href="OralUlcer.html" class="disease-link">
+                                        <h6>口腔溃疡</h6>
+                                        <div class="disease-img">
+                                            <img src="image/diseases/OralUlcer.png" alt="结膜炎图片">
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="left-con public-bg">
+                        <div class="public-title">全国口腔疾病分布情况</div>
+                        <div class="title-nav" id="leida"></div>
+                    </div>
+                    <div class="left-bottom public-bg">
+                        <div class="public-title">患病率较高的五大口腔疾病</div>
+                        <div class="title-nav" id="wuran"></div>
+                    </div>
+                </div>
+
+                <div class="center-body">
+                    <div class="map" id="map"></div>
+                </div>
+
+                <div class="right-body">
+                    <div class="right-top public-bg">
+                        <div class="public-title">关于牙科疾病的最新研究</div>
+                        <div class="title-nav">
+                            <div class="top5-ul" id="newsContainer">
+                                <ul>
+                                    <li>
+                                        <span class="rank">NEW</span>
+                                        <span class="journal">Nature Med</span>
+                                        <a href="research-article.html?id=1">AI深度学习模型在龋齿早期诊断中的应用研究</a>
+                                        <span class="date">2024-03-18</span>
+                                    </li>
+                                    <li>
+                                        <span class="rank">NEW</span>
+                                        <span class="journal">Science</span>
+                                        <a href="research-article.html?id=2">新型生物材料在牙髓再生中的突破性进展</a>
+                                        <span class="date">2024-03-15</span>
+                                    </li>
+                                    <li>
+                                        <span class="rank">NEW</span>
+                                        <span class="journal">Cell</span>
+                                        <a href="research-article.html?id=3">基于干细胞技术的牙周组织再生研究新进展</a>
+                                        <span class="date">2024-03-14</span>
+                                    </li>
+                                    <li>
+                                        <span class="rank">HOT</span>
+                                        <span class="journal">Science Advances</span>
+                                        <a href="research-article.html?id=4">新发现：口腔微生物组与牙周病发病机制的关联</a>
+                                        <span class="date">2024-03-12</span>
+                                    </li>
+                                    <li>
+                                        <span class="rank">HOT</span>
+                                        <span class="journal">NEJM</span>
+                                        <a href="research-article.html?id=5">新型生物材料在牙齿修复中的临床试验结果</a>
+                                        <span class="date">2024-03-07</span>
+                                    </li>
+                                    <li>
+                                        <span class="rank">HOT</span>
+                                        <span class="journal">JDR</span>
+                                        <a href="research-article.html?id=6">人工智能辅助口腔手术精准度研究</a>
+                                        <span class="date">2024-03-05</span>
+                                    </li>
+                                    <li>
+                                        <span class="rank">HOT</span>
+                                        <span class="journal">JADA</span>
+                                        <a href="research-article.html?id=7">饮食习惯与儿童龋齿发病率相关性研究</a>
+                                        <span class="date">2024-03-02</span>
+                                    </li>
+                                    <li>
+                                        <span class="rank">TOP</span>
+                                        <span class="journal">Dental Materials</span>
+                                        <a href="research-article.html?id=8">3D打印技术在个性化牙冠制作中的应用</a>
+                                        <span class="date">2024-02-28</span>
+                                    </li>
+                                    <li>
+                                        <span class="rank">TOP</span>
+                                        <span class="journal">J Endodontics</span>
+                                        <a href="research-article.html?id=9">根管治疗中纳米材料的应用研究进展</a>
+                                        <span class="date">2024-02-25</span>
+                                    </li>
+                                    <li>
+                                        <span class="rank">TOP</span>
+                                        <span class="journal">Periodontology</span>
+                                        <a href="research-article.html?id=10">牙周炎与全身系统性疾病的关联性研究</a>
+                                        <span class="date">2024-02-22</span>
+                                    </li>
+                                    <li>
+                                        <span class="rank">TOP</span>
+                                        <span class="journal">Oral Surgery</span>
+                                        <a href="research-article.html?id=11">智齿拔除手术并发症预防的新策略</a>
+                                        <span class="date">2024-02-20</span>
+                                    </li>
+                                    <li>
+                                        <span class="rank">TOP</span>
+                                        <span class="journal">Implant Dentistry</span>
+                                        <a href="research-article.html?id=12">新型牙种植体表面处理技术的临床效果</a>
+                                        <span class="date">2024-02-18</span>
+                                    </li>
+                                    <li>
+                                        <span class="rank">TOP</span>
+                                        <span class="journal">Orthodontics</span>
+                                        <a href="research-article.html?id=13">隐形牙齿矫正技术的最新进展</a>
+                                        <span class="date">2024-02-15</span>
+                                    </li>
+                                    <li>
+                                        <span class="rank">TOP</span>
+                                        <span class="journal">Pediatric Dentistry</span>
+                                        <a href="research-article.html?id=14">儿童口腔健康与认知发展的相关性研究</a>
+                                        <span class="date">2024-02-12</span>
+                                    </li>
+                                    <li>
+                                        <span class="rank">TOP</span>
+                                        <span class="journal">Oral Medicine</span>
+                                        <a href="research-article.html?id=15">口腔癌早期筛查新方法的研究进展</a>
+                                        <span class="date">2024-02-10</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="right-bottom public-bg">
+                        <div class="public-title">AI口腔图像诊断</div>
+                        <div class="ai-diagnosis">
+                            <div class="ai-intro">
+                                <div class="intro-text">
+                                    <div class="ai-capabilities">
+                                        <div class="capability-item">
+                                            <i class="fas fa-eye"></i>
+                                            <span>口腔病变检测</span>
+                                        </div>
+                                        <div class="capability-item">
+                                            <i class="fas fa-search"></i>
+                                            <span>龋齿筛查</span>
+                                        </div>
+                                        <div class="capability-item">
+                                            <i class="fas fa-brain"></i>
+                                            <span>牙周炎诊断</span>
+                                        </div>
+                                        <div class="capability-item">
+                                            <i class="fas fa-chart-line"></i>
+                                            <span>龋齿风险评估</span>
+                                        </div>
+                                        <div class="capability-item">
+                                            <i class="fas fa-clock"></i>
+                                            <span>实时分析</span>
+                                        </div>
+                                        <div class="capability-item">
+                                            <i class="fas fa-clock"></i>
+                                            <span>牙髓炎检测</span>
+                                        </div>
+                                    </div>
+                                    <h3>智能口腔检测</h3>
+                                    <p>上口腔图像，获取AI智能分析结果</p>
+                                </div>
+                                <div class="accuracy-badge">
+                                    <span class="accuracy-value">99.8%</span>
+                                    <span class="accuracy-label">准确率</span>
+                                </div>
+                            </div>
+                            <div class="diagnosis-steps">
+                                <div class="step">
+                                    <div class="step-icon">
+                                        <i class="fas fa-image"></i>
+                                    </div>
+                                    <span>上传图像</span>
+                                </div>
+                                <div class="step-arrow">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                                <div class="step">
+                                    <div class="step-icon">
+                                        <i class="fas fa-brain"></i>
+                                    </div>
+                                    <span>AI分析</span>
+                                </div>
+                                <div class="step-arrow">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                                <div class="step">
+                                    <div class="step-icon">
+                                        <i class="fas fa-file-alt"></i>
+                                    </div>
+                                    <span>诊断报告</span>
+                                </div>
+                            </div>
+
+                            <!-- 添加温馨提示 -->
+                            <div class="warm-tips">
+                                <i class="fas fa-heart"></i>
+                                <span>定期口腔检测，守护口腔清新</span>
+                                <div class="tips-list">
+                                    <div class="tip-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>建议半年一检</span>
+                                    </div>
+                                    <div class="tip-item">
+                                        <i class="fas fa-eye"></i>
+                                        <span>保护口腔从现在开始</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                        <div class="disease-types">
+                            <div class="type-tag">龋齿</div>
+                            <div class="type-tag">牙髓炎</div>
+                            <div class="type-tag">牙龈炎</div>
+                            <div class="type-tag">牙周炎</div>
+                            <div class="type-tag">口腔溃疡</div>
+                            <div class="type-tag">智齿冲突</div>
+                        </div>
+
+                        <button class="start-diagnosis" onclick="window.location.href='ai-diagnosis.html'">
+                            开始检测
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="detection-result" id="detectionResult" style="display: none;">
+        <h3>检测结果</h3>
+        <div class="result-content">
+            <p id="resultText"></p>
+            <p id="confidenceText"></p>
+            <p id="detectionsText"></p>
+        </div>
+        <div class="result-actions">
+            <button class="export-word-btn" onclick="exportWord()">
+                <i class="fas fa-file-word"></i>
+                导出Word报告
+            </button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="js/china.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 检查登录状态
+        if (!sessionStorage.getItem('isLoggedIn')) {
+            window.location.href = 'welcome.html';
+            return;
+        }
+
+        //顶部时间
+        function getTime(){
+            var myDate = new Date();
+            var myYear = myDate.getFullYear();
+            var myMonth = myDate.getMonth()+1;
+            var myToday = myDate.getDate();
+            var myDay = myDate.getDay();
+            var myHour = myDate.getHours();
+            var myMinute = myDate.getMinutes();
+            var mySecond = myDate.getSeconds();
+            var week = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+            var nowTime;
+
+            nowTime = myYear+'年'+fillZero(myMonth)+'月'+fillZero(myToday)+'日'+'&nbsp;&nbsp;'+fillZero(myHour)+':'+fillZero(myMinute)+':'+fillZero(mySecond)+'&nbsp;&nbsp;'+week[myDay]+'&nbsp;&nbsp;';
+            document.querySelector('#time').innerHTML = nowTime;
+        };
+
+        function fillZero(str){
+            var realNum;
+            if(str<10){
+                realNum = '0'+str;
+            }else{
+                realNum = str;
+            }
+            return realNum;
+        }
+
+        //大屏时间更新
+        setInterval(getTime,1000);
+
+        const avatar = document.querySelector('.avatar');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+        
+        // 点击头像显示/隐藏下拉菜单
+        avatar.addEventListener('click', function(e) {
+            e.stopPropagation();
+            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+        });
+        
+        // 点击页面其他地方关闭下拉菜单
+        document.addEventListener('click', function() {
+            dropdownMenu.style.display = 'none';
+        });
+        
+        // 阻止下拉菜单内部点击事件冒泡
+        dropdownMenu.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+
+        // 显示面板的函数
+        window.showPanel = function(panelId, event) {
+            if (event) {
+                event.preventDefault();
+            }
+            // 隐藏所有面板
+            document.querySelectorAll('.panel-container').forEach(panel => {
+                panel.style.display = 'none';
+            });
+            
+            // 显示选中的面板
+            const selectedPanel = document.getElementById(panelId);
+            if (selectedPanel) {
+                selectedPanel.style.display = 'block';
+            }
+            
+            // 关闭下拉菜单
+            dropdownMenu.style.display = 'none';
+        }
+
+        // 隐藏面板的函数
+        window.hidePanel = function(panelId) {
+            const panel = document.getElementById(panelId);
+            if (panel) {
+                panel.style.display = 'none';
+            }
+        }
+
+        // 点击面板外部关闭面板
+        document.addEventListener('click', function(event) {
+            const panels = document.querySelectorAll('.panel-container');
+            
+            panels.forEach(panel => {
+                if (panel.style.display === 'block' && 
+                    !panel.contains(event.target) && 
+                    !dropdownMenu.contains(event.target) && 
+                    !avatar.contains(event.target)) {
+                    panel.style.display = 'none';
+                }
+            });
+        });
+
+        // 阻止面板内部点击事件冒泡
+        document.querySelectorAll('.panel-container').forEach(panel => {
+            panel.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        });
+
+        // 退出登录功能
+        window.logout = function() {
+            sessionStorage.removeItem('isLoggedIn');
+            sessionStorage.removeItem('username');
+            window.location.href = 'login.html';
+        }
+    });
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/earth.js"></script>
+
+<script>
+    // 检查登录状态
+    if (!sessionStorage.getItem('isLoggedIn')) {
+        window.location.href = 'welcome.html';
+    }
+
+    // 设置用户名
+    document.querySelector('.username').textContent = sessionStorage.getItem('username') || 'admin';
+
+    // 修改下拉菜单的显示/隐藏逻辑
+    function toggleDropdown() {
+        const dropdown = document.getElementById('userDropdown');
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // 点击其他地方关闭下拉菜单
+    document.addEventListener('click', function(event) {
+        const dropdown = document.getElementById('userDropdown');
+        const avatar = document.querySelector('.avatar');
+        if (!avatar.contains(event.target) && !dropdown.contains(event.target)) {
+            dropdown.style.display = 'none';
+        }
+    });
+
+    function showMedicalRecords() {
+        // 实现查看病例功能
+        console.log('查看病例');
+    }
+
+    function showCheckHistory() {
+        // 实现查看检查记录功能
+        console.log('查看检查记录');
+    }
+
+    function showNotifications() {
+        // 实现查看通知功能
+        console.log('查看通知');
+    }
+
+    function logout() {
+        // 实现退出登录功能
+        console.log('退出登录');
+        sessionStorage.removeItem('isLoggedIn');
+        sessionStorage.removeItem('username');
+        window.location.href = 'login.html';
+    }
+</script>
+
+<script>
+    // 检查是否登录
+    if (!sessionStorage.getItem('isLoggedIn')) {
+        // 显示登录提示模态框
+        const modalHtml = `
+            <div class="login-prompt-modal">
+                <div class="modal-content">
+                    <h2>需要登录</h2>
+                    <p>请登录后查看详细内容</p>
+                    <div class="modal-buttons">
+                        <button onclick="window.location.href='login.html'">
+                            <i class="fas fa-sign-in-alt"></i> 立即登录
+                        </button>
+                        <button onclick="window.location.href='welcome.html'">
+                            <i class="fas fa-home"></i> 返回首页
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+        document.body.innerHTML = modalHtml;
+        
+        // 添加样式
+        const style = document.createElement('style');
+        style.textContent = `
+            .login-prompt-modal {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(12,26,63,0.95);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 9999;
+            }
+            
+            .modal-content {
+                background: rgba(255,255,255,0.1);
+                padding: 30px;
+                border-radius: 10px;
+                text-align: center;
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(77,208,225,0.3);
+                animation: modalFadeIn 0.3s ease;
+            }
+            
+            .modal-content h2 {
+                color: #fff;
+                margin-bottom: 15px;
+            }
+            
+            .modal-content p {
+                color: #bad0e2;
+                margin-bottom: 25px;
+            }
+            
+            .modal-buttons {
+                display: flex;
+                gap: 15px;
+                justify-content: center;
+            }
+            
+            .modal-buttons button {
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                transition: all 0.3s ease;
+            }
+            
+            .modal-buttons button:first-child {
+                background: #2997e4;
+                color: #fff;
+            }
+            
+            .modal-buttons button:last-child {
+                background: transparent;
+                border: 1px solid #4dd0e1;
+                color: #4dd0e1;
+            }
+            
+            .modal-buttons button:hover {
+                transform: translateY(-2px);
+            }
+            
+            @keyframes modalFadeIn {
+                from { opacity: 0; transform: translateY(-20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+</script>
+
+<style>
+.user-profile {
+    position: relative;
+    margin-left: 20px;
+}
+
+.avatar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.avatar:hover {
+    background: rgba(41,151,228,0.1);
+}
+
+.avatar i {
+    font-size: 24px;
+    color: #4dd0e1;
+}
+
+.username {
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 240px;
+    background: rgba(2,11,36,0.95);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    border: 1px solid rgba(41,151,228,0.2);
+    padding: 0;
+    display: none;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px;
+    background: rgba(2,11,36,1);
+    border-bottom: 1px solid rgba(41,151,228,0.1);
+}
+
+.user-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(41,151,228,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-avatar i {
+    font-size: 24px;
+    color: #4dd0e1;
+}
+
+.user-details {
+    flex: 1;
+}
+
+.user-name {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.user-role {
+    color: rgba(186,208,226,0.6);
+    font-size: 12px;
+}
+
+.menu-list {
+    padding: 8px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    color: #bad0e2;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    margin-bottom: 2px;
+}
+
+.menu-item:hover {
+    background: rgba(41,151,228,0.1);
+    color: #ffffff;
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.menu-item i {
+    width: 16px;
+    font-size: 14px;
+    margin-right: 12px;
+}
+
+.menu-item span {
+    flex: 1;
+    font-size: 14px;
+}
+
+.badge {
+    background: rgba(41,151,228,0.15);
+    color: #4dd0e1;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+    min-width: 20px;
+    text-align: center;
+}
+
+.menu-item:hover .badge {
+    background: rgba(41,151,228,0.25);
+    color: #ffffff;
+}
+
+.logout {
+    color: #ff6b6b;
+    margin-top: 4px;
+}
+
+.logout:hover {
+    background: rgba(255,107,107,0.1);
+    color: #ff8585;
+}
+
+.right-top {
+    max-height: 400px;
+    overflow: hidden;
+}
+
+.title-nav {
+    max-height: 350px;
+    overflow-y: auto;
+    padding-right: 20px;
+    margin-right: -20px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.title-nav::-webkit-scrollbar {
+    display: none;
+}
+
+.top5-ul ul {
+    padding: 0;
+    margin: 0;
+}
+
+.top5-ul li {
+    padding: 12px 15px;
+    border-bottom: 1px solid rgba(41,151,228,0.1);
+    transition: all 0.3s ease;
+}
+
+.top5-ul li:hover {
+    background: rgba(41,151,228,0.1);
+}
+
+.top5-ul li:last-child {
+    border-bottom: none;
+}
+
+.top5-ul .rank {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-right: 8px;
+}
+
+.top5-ul .rank.new {
+    background: rgba(77,208,225,0.2);
+    color: #4dd0e1;
+}
+
+.top5-ul .rank.hot {
+    background: rgba(255,107,107,0.2);
+    color: #ff6b6b;
+}
+
+.top5-ul .journal {
+    color: #bad0e2;
+    font-size: 12px;
+    margin-right: 8px;
+}
+
+.top5-ul a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.top5-ul a:hover {
+    color: #4dd0e1;
+}
+
+.top5-ul .date {
+    float: right;
+    color: #bad0e2;
+    font-size: 12px;
+}
+
+/* 添加导出Word按钮样式 */
+.export-word-btn {
+    background-color: #2b579a;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.export-word-btn:hover {
+    background-color: #1e3f6f;
+}
+
+.detection-result {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-top: 20px;
+}
+
+.result-content {
+    margin: 15px 0;
+}
+
+.result-content p {
+    margin: 8px 0;
+    font-size: 14px;
+}
+
+.result-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+</style>
+
+<script>
+// 存储最新的检测结果
+let latestDetectionResults = null;
+
+async function handleImageUpload(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+        const response = await fetch('/predict', {
+            method: 'POST',
+            body: formData
+        });
+
+        const result = await response.json();
+        if (response.ok) {
+            // 存储检测结果
+            latestDetectionResults = result;
+            
+            // 显示检测结果
+            document.getElementById('detectionResult').style.display = 'block';
+            document.getElementById('resultText').textContent = `检测结果：${result.result}`;
+            document.getElementById('confidenceText').textContent = `置信度：${(result.confidence * 100).toFixed(2)}%`;
+            document.getElementById('detectionsText').textContent = `检测到的问题数量：${result.detections}`;
+        } else {
+            alert('检测失败：' + result.error);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('检测过程中发生错误');
+    }
+}
+
+async function exportWord() {
+    if (!latestDetectionResults) {
+        alert('请先进行检测才能导出报告');
+        return;
+    }
+
+    try {
+        const response = await fetch('/export_word', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                detection_results: latestDetectionResults
+            })
+        });
+
+        const result = await response.json();
+        if (response.ok) {
+            // 创建一个隐藏的链接并点击它来下载报告
+            const link = document.createElement('a');
+            link.href = result.report_url;
+            link.download = 'dental_report.docx';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        } else {
+            alert('导出报告失败：' + result.error);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('导出报告过程中发生错误');
+    }
+}
+</script>
+

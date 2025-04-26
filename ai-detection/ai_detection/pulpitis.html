@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>牙髓炎 - 口腔疾病预测中心</title>
+    <link rel="stylesheet" href="css/disease-detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="content-body">
+        <!-- Header部分 -->
+        <div class="header">
+            <div class="header-left">
+                <span>牙髓炎</span>
+            </div>
+            <div class="header-right">
+                <button class="action-button" onclick="window.location.href='ai-diagnosis.html'">
+                    <i class="fas fa-robot"></i>
+                    AI智能诊断
+                </button>
+                <a href="index.html" class="back-button">
+                    <i class="fas fa-home"></i>
+                    返回首页
+                </a>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- 左侧导航栏 -->
+            <div class="sidebar">
+                <div class="sidebar-header">
+                    <i class="fas fa-list-ul"></i>
+                    相关口腔疾病
+                </div>
+                <div class="disease-nav">
+                    <a href="saprodontia.html" class="disease-link">
+                        <i class="fas fa-tooth"></i>
+                        龋齿
+                        <span class="risk-badge medium">中风险</span>
+                    </a>
+                    <a href="periodontitis.html" class="disease-link">
+                        <i class="fas fa-teeth"></i>
+                        牙周炎
+                        <span class="risk-badge high">高风险</span>
+                    </a>
+                    <a href="gingivitis.html" class="disease-link">
+                        <i class="fas fa-tooth"></i>
+                        牙龈炎
+                        <span class="risk-badge low">低风险</span>
+                    </a>
+                    <a href="pulpitis.html" class="disease-link active">
+                        <i class="fas fa-teeth-open"></i>
+                        牙髓炎
+                        <span class="risk-badge high">高风险</span>
+                    </a>
+                    <a href="OralUlcer.html" class="disease-link">
+                        <i class="fas fa-notes-medical"></i>
+                        口腔溃疡
+                        <span class="risk-badge low">低风险</span>
+                    </a>
+                    <a href="wtc.html" class="disease-link">
+                        <i class="fas fa-tooth"></i>
+                        智齿冲突
+                        <span class="risk-badge medium">中风险</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 主要内容区域 -->
+            <div class="main-content">
+                <div class="disease-info">
+                    <!-- 快速信息卡片 -->
+                    <div class="quick-info">
+                        <div class="info-card">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <h3>危险程度</h3>
+                            <div class="risk-level medium">中风险</div>
+                        </div>
+                        <div class="info-card">
+                            <i class="fas fa-user-md"></i>
+                            <h3>就医建议</h3>
+                            <p>症状出现立即就医</p>
+                        </div>
+                        <div class="info-card">
+                            <i class="fas fa-clock"></i>
+                            <h3>最佳就医时间</h3>
+                            <p>症状出现初期</p>
+                        </div>
+                    </div>
+
+                    <!-- 3D模型展示区域 -->
+                    <div id="three-container" style="width: 100%; height: 400px; margin-bottom: 20px;"></div>
+
+                    <!-- 疾病介绍 -->
+                    <div class="section">
+                        <h2><i class="fas fa-info-circle"></i> 什么是牙髓炎？</h2>
+                        <p>牙髓炎(Pulpitis)是牙髓组织（牙神经）的急性或慢性炎症，多由龋齿、牙外伤或牙周炎逆行感染引起。</p>
+                        
+                        <div class="key-points">
+                            <h3>关键特征：</h3>
+                            <ul>
+                                <li>剧烈自发性疼痛</li>
+                                <li>夜间痛、冷热刺激痛加剧</li>
+                                <li>疼痛无法定位且放射至头面部</li>
+                            </ul>
+                        </div>
+
+                        <div class="disease-types">
+                            <h3><i class="fas fa-list-ul"></i> 牙髓炎分类</h3>
+                            <div class="type-grid">
+                                <div class="type-card">
+                                    <div class="type-header">
+                                        <i class="fas fa-tint-slash"></i>
+                                        <h4>可复性牙髓炎</h4>
+                                    </div>
+                                    <p>患牙遇冷热刺激产生短暂疼痛，刺激去除疼痛立即消失</p>
+                                </div>
+                                <div class="type-card">
+                                    <div class="type-header">
+                                        <i class="fas fa-wind"></i>
+                                        <h4>不可复性牙髓炎</h4>
+                                    </div>
+                                    <p>一般由可复性牙髓炎发展而来，细菌入侵使牙髓发生不可逆炎症变化</p>
+                                </div>
+                                <div class="type-card">
+                                    <div class="type-header">
+                                        <i class="fas fa-random"></i>
+                                        <h4>慢性牙髓炎</h4>
+                                    </div>
+                                    <p>一般不发生剧烈自发性疼痛，但有时可出现阵发性隐痛或钝痛</p>
+                                </div>
+                                <div class="type-card">
+                                    <div class="type-header">
+                                        <i class="fas fa-laptop"></i>
+                                        <h4>牙髓坏死</h4>
+                                    </div>
+                                    <p>牙髓炎发展的最终结果，一般无自觉症状，患者常因牙齿变色而就诊</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 在疾病介绍部分后添加 -->
+                    <div class="section">
+                        <h2><i class="fas fa-list-ul"></i> 牙髓炎分类</h2>
+                        
+                        <div class="type-grid">
+                            <div class="type-card">
+                                <i class="fas fa-angle-double-right"></i>
+                                可复性牙髓炎
+                                <p>冷热刺激痛，刺激去除后疼痛立即消失，无自发痛，牙髓活力正常</p>
+                            </div>
+                            <div class="type-card">
+                                <i class="fas fa-angle-double-right"></i>
+                                不可复性牙髓炎
+                                <p>包括急性牙髓炎和慢性牙髓炎急性发作，剧烈自发性疼痛，夜间加重，冷热刺激痛剧烈</p>
+                            </div>
+                            <div class="type-card">
+                                <i class="fas fa-angle-double-right"></i>
+                                慢性牙髓炎
+                                <p>长期冷热刺激痛或钝痛，无明显自发痛，牙髓部分或全部坏死</p>
+                            </div>
+                            <div class="type-card">
+                                <i class="fas fa-angle-double-right"></i>
+                                牙髓坏死
+                                <p>牙髓无活力，无疼痛，牙齿变色，X线片显示根尖周阴影</p>
+                            </div>
+                        </div>
+
+                        <div class="image-section">
+                            <h3><i class="fas fa-image"></i> 图示说明：</h3>
+                            <div class="disease-images">
+                                <div class="disease-image">
+                                    <div class="image-title">图1：牙髓炎发病机制示意图</div>
+                                    <img src="image/details/pulpitis/mechanism.png" alt="牙髓炎发病机制">
+                                    <div class="image-desc">上图展示了牙髓炎的发病机制</div>
+                                </div>
+                                <div class="disease-image">
+                                    <div class="image-title">图2：正常牙髓与牙髓炎对比图</div>
+                                    <img src="image/details/pulpitis/compare.png" alt="正常牙髓与牙髓炎对比">
+                                    <div class="image-desc">上图展示了正常牙髓与牙髓炎的对比</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 症状部分 -->
+                    <div class="section">
+                        <h2><i class="fas fa-exclamation-circle"></i> 主要症状</h2>
+                        
+                        <div class="symptoms-categories">
+                            <div class="category">
+                                <h3><i class="fas fa-eye"></i> 主观症状</h3>
+                                <div class="symptoms-grid">
+                                    <div class="symptom-card">
+                                        <i class="fas fa-burn"></i>
+                                        <h4>疼痛感</h4>
+                                        <p>牙齿疼痛</p>
+                                    </div>
+                                    <div class="symptom-card">
+                                        <i class="fas fa-fire"></i>
+                                        <h4>牙齿色变</h4>
+                                        <p>牙齿颜色、外观发生改变</p>
+                                    </div>
+                                    <div class="symptom-card">
+                                        <i class="fas fa-eye-slash"></i>
+                                        <h4>牙齿敏感</h4>
+                                        <p>牙齿对冷热刺激的敏感度异常</p>
+                                    </div>
+                                    <div class="symptom-card">
+                                        <i class="fas fa-lightbulb"></i>
+                                        <h4>咬合异常</h4>
+                                        <p>咬合时有异样的感觉</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="category">
+                                <h3><i class="fas fa-microscope"></i> 客观体征</h3>
+                                <div class="symptoms-grid">
+                                    <div class="symptom-card">
+                                        <i class="fas fa-tint"></i>
+                                        <h4>牙齿外观改变</h4>
+                                        <p>呈暗黄色、灰色、黑色</p>
+                                    </div>
+                                    <div class="symptom-card">
+                                        <i class="fas fa-eye"></i>
+                                        <h4>牙髓活力改变</h4>
+                                        <p>无法感知外界温度</p>
+                                    </div>
+                                    <div class="symptom-card">
+                                        <i class="fas fa-vial"></i>
+                                        <h4>叩诊和扪诊</h4>
+                                        <p>无明显疼痛</p>
+                                    </div>
+                                    <div class="symptom-card">
+                                        <i class="fas fa-allergies"></i>
+                                        <h4>牙龈情况</h4>
+                                        <p>牙龈红肿、瘘管</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 治疗方法 -->
+                    <div class="section">
+                        <h2><i class="fas fa-procedures"></i> 治疗方法</h2>
+                        <div class="treatment-methods">
+                            <div class="treatment-card">
+                                <div class="card-header">
+                                    <i class="fas fa-eye-dropper"></i>
+                                    <h3>药物治疗</h3>
+                                </div>
+                                <div class="card-content">
+                                    <ul>
+                                        <li>漱口水</li>
+                                        <li>碘甘油</li>
+                                        <li>抗生素</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="treatment-card">
+                                <div class="card-header">
+                                    <i class="fas fa-plug"></i>
+                                    <h3>物理治疗</h3>
+                                </div>
+                                <div class="card-content">
+                                    <ul>
+                                        <li>洗牙</li>
+                                        <li>龈下刮治和根面平整</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="treatment-card">
+                                <div class="card-header">
+                                    <i class="fas fa-hand-holding-water"></i>
+                                    <h3>环境调节</h3>
+                                </div>
+                                <div class="card-content">
+                                    <ul>
+                                        <li>口腔卫生</li>
+                                        <li>饮食调节</li>
+                                        <li>生活习惯</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧建议栏 -->
+            <div class="advice-sidebar">
+                <div class="advice-section">
+                    <div class="advice-header">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>日常建议</h3>
+                    </div>
+                    <div class="advice-list">
+                        <div class="advice-item">
+                            <i class="fas fa-clock"></i>
+                            <div class="advice-content">
+                                <h4>饮食方面</h4>
+                                <p>避免刺激性食物，选择软质食物</p>
+                            </div>
+                        </div>
+                        <div class="advice-item">
+                            <i class="fas fa-tint"></i>
+                            <div class="advice-content">
+                                <h4>口腔卫生</h4>
+                                <p>正确刷牙，使用牙线、漱口水</p>
+                            </div>
+                        </div>
+                        <div class="advice-item">
+                            <i class="fas fa-eye"></i>
+                            <div class="advice-content">
+                                <h4>生活习惯</h4>
+                                <p>规律作息、缓解压力</p>
+                            </div>
+                        </div>
+                        <div class="advice-item">
+                            <i class="fas fa-glass-water"></i>
+                            <div class="advice-content">
+                                <h4>其它方面</h4>
+                                <p>避免患牙过度用力、定期复诊</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="advice-section">
+                    <div class="advice-header">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h3>注意事项</h3>
+                    </div>
+                    <div class="warning-list">
+                        <div class="warning-item">
+                            <i class="fas fa-ban"></i>
+                            <p>避免自行处理</p>
+                        </div>
+                        <div class="warning-item">
+                            <i class="fas fa-ban"></i>
+                            <p>注意疼痛变化</p>
+                        </div>
+                        <div class="warning-item">
+                            <i class="fas fa-ban"></i>
+                            <p>谨慎使用止痛药物</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="emergency-contact">
+                    <div class="advice-header">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>紧急联系</h3>
+                    </div>
+                    <div class="contact-info">
+                        <p><i class="fas fa-hospital-alt"></i> 口腔急诊: 120</p>
+                        <p><i class="fas fa-phone"></i> 咨询热线: 010-xxxxxxxx</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 添加平滑滚动效果
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.152.2/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.152.2/examples/jsm/"
+        }
+    }
+    </script>
+
+    <script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+    window.addEventListener('DOMContentLoaded', function () {
+        const container = document.getElementById('three-container');
+        if (!container) return;
+
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color('#b3d8f7');
+
+        const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+        camera.position.set(0, 1.5, 2.5);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        container.appendChild(renderer.domElement);
+
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+
+        const light = new THREE.HemisphereLight(0xffffff, 0x444444);
+        scene.add(light);
+        const dirLight = new THREE.DirectionalLight(0xffffff);
+        dirLight.position.set(3, 10, 10);
+        scene.add(dirLight);
+
+        const loader = new GLTFLoader();
+        loader.load('image/3d/pulpitis.glb', function (gltf) {
+            const model = gltf.scene;
+            model.scale.set(3, 3, 3);
+            const box = new THREE.Box3().setFromObject(model);
+            const center = box.getCenter(new THREE.Vector3());
+            model.position.sub(center);
+            scene.add(model);
+            const axesHelper = new THREE.AxesHelper(5);
+            scene.add(axesHelper);
+        }, 
+        function (xhr) {
+            console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+        },
+        function (error) {
+            console.error('❌ 模型加载失败:', error);
+            const geometry = new THREE.BoxGeometry(1, 1, 1);
+            const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+            const cube = new THREE.Mesh(geometry, material);
+            scene.add(cube);
+        });
+
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.clientWidth, container.clientHeight);
+        });
+    });
+    </script>
+</body>
+</html> 

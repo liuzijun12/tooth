@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>龋齿 - 口腔疾病预测中心</title>
+    <link rel="stylesheet" href="css/disease-detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="content-body">
+        <div class="header">
+            <div class="header-left">
+                <span>龋齿</span>
+            </div>
+            <div class="header-right">
+                <button class="action-button" onclick="window.location.href='ai-diagnosis.html'">
+                    <i class="fas fa-robot"></i>
+                    AI智能诊断
+                </button>
+                <a href="index.html" class="back-button">
+                    <i class="fas fa-home"></i>
+                    返回首页
+                </a>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="sidebar">
+                <div class="sidebar-header">
+                    <i class="fas fa-list-ul"></i>
+                    相关口腔疾病
+                </div>
+                <div class="disease-nav">
+                    <a href="saprodontia.html" class="disease-link active">
+                        <i class="fas fa-tooth"></i>
+                        龋齿
+                        <span class="risk-badge medium">中风险</span>
+                    </a>
+                    <a href="periodontitis.html" class="disease-link">
+                        <i class="fas fa-teeth"></i>
+                        牙周炎
+                        <span class="risk-badge high">高风险</span>
+                    </a>
+                    <a href="gingivitis.html" class="disease-link">
+                        <i class="fas fa-tooth"></i>
+                        牙龈炎
+                        <span class="risk-badge low">低风险</span>
+                    </a>
+                    <a href="pulpitis.html" class="disease-link">
+                        <i class="fas fa-teeth-open"></i>
+                        牙髓炎
+                        <span class="risk-badge high">高风险</span>
+                    </a>
+                    <a href="OralUlcer.html" class="disease-link">
+                        <i class="fas fa-notes-medical"></i>
+                        口腔溃疡
+                        <span class="risk-badge low">低风险</span>
+                    </a>
+                    <a href="wtc.html" class="disease-link">
+                        <i class="fas fa-tooth"></i>
+                        智齿冲突
+                        <span class="risk-badge medium">中风险</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="main-content">
+                <div class="disease-info">
+                    <div class="quick-info">
+                        <div class="info-card">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <h3>危险程度</h3>
+                            <div class="risk-level high">中风险</div>
+                        </div>
+                        <div class="info-card">
+                            <i class="fas fa-user-md"></i>
+                            <h3>就医建议</h3>
+                            <p>建议及时就医</p>
+                        </div>
+                        <div class="info-card">
+                            <i class="fas fa-clock"></i>
+                            <h3>最佳就医时间</h3>
+                            <p>发现症状后尽快</p>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <!-- 3D模型展示区域 -->
+                        <div id="three-container" style="width: 100%; height: 400px; margin-bottom: 20px;"></div>
+                        <h2><i class="fas fa-info-circle"></i> 什么是龋齿？</h2>
+                        <p>龋齿（Saprodontia）是牙齿硬组织发生慢性进行性破坏的疾病，常由细菌感染引起。</p>
+                        
+                        <div class="key-points">
+                            <h3>关键特征：</h3>
+                            <ul>
+                                <li>牙齿颜色失去光泽，逐渐形成龋洞</li>
+                                <li>牙齿质地疏松软化</li>
+                                <li>对冷热、酸甜刺激敏感</li>
+                                <li>出现短暂性疼痛</li>
+                            </ul>
+                        </div>
+
+                        <div class="disease-types">
+                            <h3><i class="fas fa-list-ul"></i> 青光眼分类</h3>
+                            <div class="type-grid">
+                                <div class="type-card">
+                                    <div class="type-header">
+                                        <i class="fas fa-angle-double-right"></i>
+                                        <h4>窝沟龋</h4>
+                                    </div>
+                                    <p>窝沟结构狭窄深凹，易滞留细菌和食物残渣，早期不易发现</p>
+                                </div>
+                                <div class="type-card">
+                                    <div class="type-header">
+                                        <i class="fas fa-angle-double-left"></i>
+                                        <h4>邻面龋</h4>
+                                    </div>
+                                    <p>早期多在牙釉质或牙本质浅层，外观不易察觉，可能表现为邻面白垩色斑块或接触点下方脱矿</p>
+                                </div>
+                                <div class="type-card">
+                                    <div class="type-header">
+                                        <i class="fas fa-child"></i>
+                                        <h4>颈部龋（根面龋）</h4>
+                                    </div>
+                                    <p>病变沿牙颈部环形发展，牙骨质和牙本质受累，常伴敏感症状，常见于牙龈退缩、牙根暴露的中老年人</p>
+                                </div>
+                                <div class="type-card">
+                                    <div class="type-header">
+                                        <i class="fas fa-notes-medical"></i>
+                                        <h4>平滑面龋</h4>
+                                    </div>
+                                    <p>早期表现为白垩色斑块，逐步向深层发展，多见于卫生状况较差或唾液分泌不足者</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="image-section">
+                            <h3><i class="fas fa-image"></i> 图示说明：</h3>
+                            <div class="disease-images">
+                                <div class="disease-image">
+                                    <div class="image-title">图1：龋齿发病机制示意图</div>
+                                    <img src="image/details/saprodontia/mechanism.png" alt="青光眼发病机制">
+                                    <div class="image-desc">上图展示了龋齿的发病机制</div>
+                                </div>
+                                <div class="disease-image">
+                                    <div class="image-title">图2：正常眼睛与青光眼对比图</div>
+                                    <img src="image/details/saprodontia/compare.png" alt="正常眼睛与青光眼对比">
+                                    <div class="image-desc">上图展示了正常牙齿与龋齿的对比</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <h2><i class="fas fa-exclamation-circle"></i> 主要症状</h2>
+                        
+                        <div class="symptoms-categories">
+                            <div class="category">
+                                <h3><i class="fas fa-eye"></i> 阶段症状</h3>
+                                <div class="symptoms-grid">
+                                    <div class="symptom-card">
+                                        <i class="fas fa-binoculars"></i>
+                                        <h4>牙釉质龋</h4>
+                                        <p>牙齿出现白垩色斑块或棕褐色斑点</p>
+                                    </div>
+                                    <div class="symptom-card">
+                                        <i class="fas fa-low-vision"></i>
+                                        <h4>牙本质浅层龋</h4>
+                                        <p>形成明显龋洞，洞内可见软化的腐坏牙本质（呈黄褐色或黑褐色），对冷热刺激、酸甜食物敏感，食物嵌塞入龋洞时可能出现 短暂疼痛，清理后缓解</p>
+                                    </div>
+                                    <div class="symptom-card">
+                                        <i class="fas fa-rainbow"></i>
+                                        <h4>牙本质深层龋</h4>
+                                        <p>龋洞深大，接近牙髓（牙神经）洞内腐质较多，牙齿结构可能变脆。敏感程度明显增强，食物塞嵌疼痛明显</p>
+                                    </div>
+                                    <div class="symptom-card">
+                                        <i class="fas fa-adjust"></i>
+                                        <h4>牙髓炎</h4>
+                                        <p>无明显刺激时，牙齿阵发性、剧烈疼痛，冷热刺激痛加重</p>
+                                    </div>
+                                    <div class="symptom-card">
+                                        <i class="fas fa-advanced"></i>
+                                        <h4>根尖周炎</h4>
+                                        <p>持续跳痛或胀痛，牙龈表面形成脓包，严重时可能伴随面部肿胀、发热、淋巴结肿大，儿童患者更为明显</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="category">
+                                <h3><i class="fas fa-heartbeat"></i> 急性发作症状</h3>
+                                <div class="symptoms-grid">
+                                    <div class="symptom-card">
+                                        <i class="fas fa-bolt"></i>
+                                        <h4>急性龋</h4>
+                                        <p>大面积棕黑色龋洞，对酸甜冷热刺激极度敏感</p>
+                                    </div>
+                                    <div class="symptom-card">
+                                        <i class="fas fa-dizzy"></i>
+                                        <h4>急性牙髓炎</h4>
+                                        <p>出现阵发性尖锐疼痛，受刺激疼痛加重，疼痛可放射至面部、太阳穴、耳后。</p>
+                                    </div>
+                                    <div class="symptom-card">
+                                        <i class="fas fa-eye-slash"></i>
+                                        <h4>急性根尖周炎</h4>
+                                        <p>明显的咬合痛，牙龈部位红肿、压痛明显，可能伴随全身发热、乏力、颌下淋巴结肿大</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="category">
+                                <h3><i class="fas fa-calendar-alt"></i> 疾病进展</h3>
+                                <div class="progress-timeline">
+                                    <div class="timeline-item">
+                                        <div class="timeline-point"></div>
+                                        <div class="timeline-content">
+                                            <h4>早期</h4>
+                                            <p>无自觉症状</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-point"></div>
+                                        <div class="timeline-content">
+                                            <h4>中期</h4>
+                                            <p>短暂刺激痛，对冷热、酸甜敏感</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-point"></div>
+                                        <div class="timeline-content">
+                                            <h4>晚期</h4>
+                                            <p>疼痛较剧烈，刺激去除后疼痛消失</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <h2><i class="fas fa-procedures"></i> 治疗方法</h2>
+                        <div class="treatment-methods">
+                            <div class="treatment-card">
+                                <div class="card-header">
+                                    <i class="fas fa-pills"></i>
+                                    <h3>药物治疗</h3>
+                                </div>
+                                <div class="card-content">
+                                    <ul>
+                                        <li>涂抹氟化钠溶液</li>
+                                        <li>涂抹氟化亚锡</li>
+                                        <li>涂抹含氟涂料</li>
+                                        <li>涂抹硝酸银溶液</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="treatment-card">
+                                <div class="card-header">
+                                    <i class="fas fa-laser"></i>
+                                    <h3>充填治疗</h3>
+                                </div>
+                                <div class="card-content">
+                                    <ul>
+                                        <li>预防性树脂充填（浅龋）</li>
+                                        <li>垫底充填术（中龋）</li>
+                                        <li>根管充填（间接盖髓术）</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="treatment-card">
+                                <div class="card-header">
+                                    <i class="fas fa-laser"></i>
+                                    <h3>拔牙</h3>
+                                </div>
+                                <div class="card-content">
+                                    <ul>
+                                        <li>牙齿龋坏严重无法修复可考虑拔牙</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="treatment-card">
+                                <div class="card-header">
+                                    <i class="fas fa-hospital-user"></i>
+                                    <h3>安抚治疗</h3>
+                                </div>
+                                <div class="card-content">
+                                    <ul>
+                                        <li>先放置丁香油氧化锌糊剂安抚牙髓，暂封 1~2 周，无症状再永久充填</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <h2><i class="fas fa-shield-alt"></i> 预防建议</h2>
+                        <div class="prevention-tips">
+                            <div class="tip">
+                                <i class="fas fa-calendar-check"></i>
+                                <h4>定期检查</h4>
+                                <p>建议每年至少一次口腔检查，高风险人群（如：儿童、老年人、口干症患者）每3-6个月检查一次</p>
+                            </div>
+                            <div class="tip">
+                                <i class="fas fa-heartbeat"></i>
+                                <h4>保持口腔清洁</h4>
+                                <p>使用巴氏刷牙法，减少牙菌斑</p>
+                            </div>
+                            <div class="tip">
+                                <i class="fas fa-running"></i>
+                                <h4>控制糖频</h4>
+                                <p>减少吃糖次数，尤其避免睡前含糖饮食</p>
+                            </div>
+                            <div class="tip">
+                                <i class="fas fa-eye"></i>
+                                <h4>科学用氟</h4>
+                                <p>含氟牙膏 + 专业涂氟，增强牙齿抵抗力</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <h2><i class="fas fa-hospital"></i> 推荐医院</h2>
+                        <div class="hospital-list">
+                            <div class="hospital-card">
+                                <h3>北京同仁医院</h3>
+                                <div class="hospital-info">
+                                    <p><i class="fas fa-map-marker-alt"></i> 北京市东城区东交民巷1号</p>
+                                    <p><i class="fas fa-phone"></i> 010-58266699</p>
+                                    <div class="rating">
+                                        <span>专科评分：</span>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 可以添加更多医院 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 新增右侧建议栏 -->
+            <div class="advice-sidebar">
+                <div class="advice-section">
+                    <div class="advice-header">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>日常建议</h3>
+                    </div>
+                    <div class="advice-list">
+                        <div class="advice-item">
+                            <i class="fas fa-clock"></i>
+                            <div class="advice-content">
+                                <h4>定时检查口腔</h4>
+                                <p>建议每年至少进行一次口腔检查</p>
+                            </div>
+                        </div>
+                        <div class="advice-item">
+                            <i class="fas fa-moon"></i>
+                            <div class="advice-content">
+                                <h4>保证牙齿卫生</h4>
+                                <p>使用巴氏刷牙法，每次刷牙至少 2 分钟，每日早晚各一次</p>
+                            </div>
+                        </div>
+                        <div class="advice-item">
+                            <i class="fas fa-smoking-ban"></i>
+                            <div class="advice-content">
+                                <h4>戒烟限酒</h4>
+                                <p>避免吸烟饮酒，保护口腔健康</p>
+                            </div>
+                        </div>
+                        <div class="advice-item">
+                            <i class="fas fa-apple-alt"></i>
+                            <div class="advice-content">
+                                <h4>健康饮食</h4>
+                                <p>多咀嚼富含纤维素的食物（如蔬菜）</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="advice-section">
+                    <div class="advice-header">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h3>注意事项</h3>
+                    </div>
+                    <div class="warning-list">
+                        <div class="warning-item">
+                            <i class="fas fa-ban"></i>
+                            <p>限制含糖食物与饮料</p>
+                        </div>
+                        <div class="warning-item">
+                            <i class="fas fa-ban"></i>
+                            <p>避免频繁吃零食</p>
+                        </div>
+                        <div class="warning-item">
+                            <i class="fas fa-ban"></i>
+                            <p>避免用牙咬硬物</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="emergency-contact">
+                    <div class="advice-header">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>紧急联系</h3>
+                    </div>
+                    <div class="contact-info">
+                        <p><i class="fas fa-hospital-alt"></i> 眼科急诊: 120</p>
+                        <p><i class="fas fa-phone"></i> 咨询热线: 010-xxxxxxxx</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 可以添加交互效果的JavaScript代码
+        document.addEventListener('DOMContentLoaded', function() {
+            // 添加平滑滚动效果
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.152.2/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.152.2/examples/jsm/"
+        }
+    }
+    </script>
+
+    <script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+    window.addEventListener('DOMContentLoaded', function () {
+        const container = document.getElementById('three-container');
+        if (!container) return;
+
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color('#b3d8f7');
+
+        const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+        camera.position.set(0, 1.5, 2.5);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        container.appendChild(renderer.domElement);
+
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+
+        const light = new THREE.HemisphereLight(0xffffff, 0x444444);
+        scene.add(light);
+        const dirLight = new THREE.DirectionalLight(0xffffff);
+        dirLight.position.set(3, 10, 10);
+        scene.add(dirLight);
+
+        const loader = new GLTFLoader();
+        loader.load('image/3d/saprodontia.glb', function (gltf) {
+            const model = gltf.scene;
+            model.scale.set(3, 3, 3);
+            const box = new THREE.Box3().setFromObject(model);
+            const center = box.getCenter(new THREE.Vector3());
+            model.position.sub(center);
+            scene.add(model);
+            const axesHelper = new THREE.AxesHelper(5);
+            scene.add(axesHelper);
+        }, 
+        function (xhr) {
+            console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+        },
+        function (error) {
+            console.error('❌ 模型加载失败:', error);
+            const geometry = new THREE.BoxGeometry(1, 1, 1);
+            const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+            const cube = new THREE.Mesh(geometry, material);
+            scene.add(cube);
+        });
+
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.clientWidth, container.clientHeight);
+        });
+    });
+    </script>
+</body>
+</html> 

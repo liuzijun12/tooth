@@ -1,0 +1,24 @@
+@font-face {
+  font-family: "iconfont"; /* Project id  */
+  src: url('../fonts/iconfont.ttf?t=1741915098988') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+}
+
+.icon-gouwuchekong:before {
+  content: "\f0179";
+}
+
+.icon-user:before {
+  content: "\e618";
+  font-size: 18px;
+  color: #4dd0e1;
+}
+

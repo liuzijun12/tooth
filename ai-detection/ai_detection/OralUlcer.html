@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>口腔溃疡 - 口腔疾病预测中心</title>
+    <link rel="stylesheet" href="css/disease-detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="content-body">
+        <!-- Header部分 -->
+        <div class="header">
+            <div class="header-left">
+                <span>口腔溃疡</span>
+            </div>
+            <div class="header-right">
+                <button class="action-button" onclick="window.location.href='ai-diagnosis.html'">
+                    <i class="fas fa-robot"></i>
+                    AI智能诊断
+                </button>
+                <a href="index.html" class="back-button">
+                    <i class="fas fa-home"></i>
+                    返回首页
+                </a>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- 左侧导航栏 -->
+            <div class="sidebar">
+                <div class="sidebar-header">
+                    <i class="fas fa-list-ul"></i>
+                    相关口腔疾病
+                </div>
+                <div class="disease-nav">
+                    <a href="saprodontia.html" class="disease-link">
+                        <i class="fas fa-tooth"></i>
+                        龋齿
+                        <span class="risk-badge medium">中风险</span>
+                    </a>
+                    <a href="periodontitis.html" class="disease-link">
+                        <i class="fas fa-teeth"></i>
+                        牙周炎
+                        <span class="risk-badge high">高风险</span>
+                    </a>
+                    <a href="gingivitis.html" class="disease-link">
+                        <i class="fas fa-tooth"></i>
+                        牙龈炎
+                        <span class="risk-badge low">低风险</span>
+                    </a>
+                    <a href="pulpitis.html" class="disease-link">
+                        <i class="fas fa-teeth-open"></i>
+                        牙髓炎
+                        <span class="risk-badge high">高风险</span>
+                    </a>
+                    <a href="OralUlcer.html" class="disease-link active">
+                        <i class="fas fa-notes-medical"></i>
+                        口腔溃疡
+                        <span class="risk-badge low">低风险</span>
+                    </a>
+                    <a href="wtc.html" class="disease-link">
+                        <i class="fas fa-tooth"></i>
+                        智齿冲突
+                        <span class="risk-badge medium">中风险</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 主要内容区域 -->
+            <div class="main-content">
+                <div class="disease-info">
+                    <!-- 快速信息卡片 -->
+                    <div class="quick-info">
+                        <div class="info-card">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <h3>危险程度</h3>
+                            <div class="risk-level medium">中风险</div>
+                        </div>
+                        <div class="info-card">
+                            <i class="fas fa-user-md"></i>
+                            <h3>就医建议</h3>
+                            <p>如果口腔溃疡反复发作，如每月发作两次以上，或者溃疡面积较大、疼痛明显且超过两周未愈合，应尽快就医</p>
+                        </div>
+                        <div class="info-card">
+                            <i class="fas fa-clock"></i>
+                            <h3>最佳就医时间</h3>
+                            <p>口腔溃疡视诊出现症状时，通常为一周左右</p>
+                        </div>
+                    </div>
+
+                    <!-- 疾病介绍 -->
+                    <div class="section">
+                        <h2><i class="fas fa-info-circle"></i> 什么是口腔溃疡？</h2>
+                        <p>口腔溃疡是一种常见的口腔疾病，通常表现为口腔内出现一个或多个浅表性溃疡，常见于唇、颊黏膜、舌缘、牙龈等部位。</p>
+                        
+                        <div class="key-points">
+                            <h3>关键特征：</h3>
+                            <ul>
+                                <li>疼痛</li>
+                                <li>圆形或椭圆形的溃疡</li>
+                                <li>周期性与复发性</li>
+                                <li>具有自限性</li>
+                            </ul>
+                        </div>
+
+                        <div class="disease-types">
+                            <h3><i class="fas fa-list-ul"></i> 口腔溃疡分类</h3>
+                            <div class="type-grid">
+                                <div class="type-card">
+                                    <div class="type-header">
+                                        <i class="fas fa-virus"></i>
+                                        <h4>复发性口腔溃疡</h4>
+                                    </div>
+                                    <p>最常见的类型，通常表现为反复发作的浅表性溃疡</p>
+                                </div>
+                                <div class="type-card">
+                                    <div class="type-header">
+                                        <i class="fas fa-bacterium"></i>
+                                        <h4>创伤性口腔溃疡</h4>
+                                    </div>
+                                    <p>物理或化学刺激引起，如咬伤、烫伤、刷牙过度等，表现为局部黏膜损伤后的溃疡</p>
+                                </div>
+                                <div class="type-card">
+                                    <div class="type-header">
+                                        <i class="fas fa-wind"></i>
+                                        <h4>白塞病相关溃疡</h4>
+                                    </div>
+                                    <p>一种全身性疾病，除了口腔溃疡外，还可能累及其他器官如皮肤、生殖器和眼睛</p>
+                                </div>
+                                <div class="type-card">
+                                    <div class="type-header">
+                                        <i class="fas fa-radiation"></i>
+                                        <h4>其他疾病相关溃疡</h4>
+                                    </div>
+                                    <p>如口腔结核性溃疡、恶性肿瘤引起的溃疡等</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="image-section">
+                            <h3><i class="fas fa-image"></i> 图示说明：</h3>
+                            <div class="disease-images">
+                                <div class="disease-image">
+                                    <div class="image-title">图1：口腔溃疡发病机制示意图</div>
+                                    <img src="image/details/OralUlcer/mechanism.png" alt="口腔溃疡发病机制">
+                                    <div class="image-desc">上图展示了口腔溃疡的发病机制</div>
+                                </div>
+                                <div class="disease-image">
+                                    <div class="image-title">图2：正常口腔与口腔溃疡对比图</div>
+                                        <img src="image/details/OralUlcer/compare.png" alt="正常口腔与口腔溃疡对比">
+                                    <div class="image-desc">上图展示了正常口腔与口腔溃疡的对比</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 症状部分 -->
+                    <div class="section">
+                        <h2><i class="fas fa-exclamation-circle"></i> 主要症状</h2>
+                        
+                        <div class="symptoms-categories">
+                            <div class="category">
+                                <h3><i class="fas fa-eye"></i> 常见症状</h3>
+                                <div class="symptoms-grid">
+                                    <div class="symptom-card">
+                                        <i class="fas fa-eye"></i>
+                                        <h4>疼痛</h4>
+                                        <p>表现为灼痛、刺痛或烧灼感</p>
+                                    </div>
+                                    <div class="symptom-card">
+                                        <i class="fas fa-tint"></i>
+                                        <h4> 溃疡面特征</h4>
+                                        <p>口腔溃疡通常为圆形或椭圆形，中央凹陷，边缘清晰，表面覆盖灰白色或黄色假膜，周围组织红肿</p>
+                                    </div>
+                                    <div class="symptom-card">
+                                        <i class="fas fa-hand-sparkles"></i>
+                                        <h4>溃疡形态</h4>
+                                        <p>溃疡可单发或多发，常见于唇内侧、颊黏膜、舌缘、牙龈等部位</p>
+                                    </div>
+                                    <div class="symptom-card">
+                                        <i class="fas fa-sun"></i>
+                                        <h4>伴随症状</h4>
+                                        <p>部分患者可能出现低热、乏力、头痛、淋巴结肿大等</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="category">
+                                <h3><i class="fas fa-stethoscope"></i> 分类</h3>
+                                <div class="symptoms-grid">
+                                    <div class="symptom-card">
+                                        <i class="fas fa-virus"></i>
+                                        <h4>轻型溃疡</h4>
+                                        <p>单发或多发小溃疡，直径小于5毫米，愈合较快</p>
+                                    </div>
+                                    <div class="symptom-card">
+                                        <i class="fas fa-bacterium"></i>
+                                        <h4>重型溃疡</h4>
+                                        <p>单发大而深的溃疡，直径可达10-30毫米，愈合后可能留瘢痕</p>
+                                    </div>
+                                    <div class="symptom-card">
+                                        <i class="fas fa-wind"></i>
+                                        <h4>疱疹样溃疡</h4>
+                                        <p>多发小溃疡，直径小于2毫米，分布广泛，形似"满天星"</p>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 治疗方法 -->
+                    <div class="section">
+                        <h2><i class="fas fa-procedures"></i> 治疗方法</h2>
+                        <div class="treatment-methods">
+                            <div class="treatment-card">
+                                <div class="card-header">
+                                    <i class="fas fa-eye-dropper"></i>
+                                    <h3>药物治疗</h3>
+                                </div>
+                                <div class="card-content">
+                                    <ul>
+                                        <li>维生素B2</li>
+                                        <li>维生素C</li>
+                                        <li>抗生素或免疫调节剂</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="treatment-card">
+                                <div class="card-header">
+                                    <i class="fas fa-hand-holding-medical"></i>
+                                    <h3>局部用药</h3>
+                                </div>
+                                <div class="card-content">
+                                    <ul>
+                                        <li>口腔溃疡贴片</li>
+                                        <li>喷雾剂</li>
+                                        <li>凝胶</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="treatment-card">
+                                <div class="card-header">
+                                    <i class="fas fa-shield-virus"></i>
+                                    <h3>物理疗法</h3>
+                                </div>
+                                <div class="card-content">
+                                    <ul>
+                                        <li>温盐水漱口或淡盐水漱口</li>
+                                        <li>针灸治疗</li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧建议栏 -->
+            <div class="advice-sidebar">
+                <div class="advice-section">
+                    <div class="advice-header">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>日常建议</h3>
+                    </div>
+                    <div class="advice-list">
+                        <div class="advice-item">
+                            <i class="fas fa-hands-wash"></i>
+                            <div class="advice-content">
+                                <h4>保持口腔卫生</h4>
+                                <p>每天早晚刷牙，并使用软毛牙刷和温和的牙膏，避免用力过猛</p>
+                            </div>
+                        </div>
+                        <div class="advice-item">
+                            <i class="fas fa-box-tissue"></i>
+                            <div class="advice-content">
+                                <h4>饮食调整</h4>
+                                <p>多吃富含维生素和微量元素的新鲜蔬菜和水果</p>
+                            </div>
+                        </div>
+                        <div class="advice-item">
+                            <i class="fas fa-bed"></i>
+                            <div class="advice-content">
+                                <h4>充分休息</h4>
+                                <p>保证充足睡眠，以增强免疫力</p>
+                            </div>
+                        </div>
+                        <div class="advice-item">
+                            <i class="fas fa-user-friends"></i>
+                            <div class="advice-content">
+                                <h4>加强锻炼</h4>
+                                <p>进行适量运动，有助于提高身体免疫力</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="advice-section">
+                    <div class="advice-header">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h3>注意事项</h3>
+                    </div>
+                    <div class="warning-list">
+                        <div class="warning-item">
+                            <i class="fas fa-ban"></i>
+                            <p>避免吸烟、饮酒及咀嚼口香糖等行为</p>
+                        </div>
+                        <div class="warning-item">
+                            <i class="fas fa-ban"></i>
+                            <p>避免辛辣、油炸、过热、酸性食物以及煎炸食品</p>
+                        </div>
+                        <div class="warning-item">
+                            <i class="fas fa-ban"></i>
+                            <p>避免暴饮暴食，以减轻口腔负担</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="emergency-contact">
+                    <div class="advice-header">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>紧急联系</h3>
+                    </div>
+                    <div class="contact-info">
+                        <p><i class="fas fa-hospital-alt"></i> 口腔急诊: 120</p>
+                        <p><i class="fas fa-phone"></i> 咨询热线: 010-xxxxxxxx</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 添加平滑滚动效果
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
