@@ -15,6 +15,8 @@ import json
 import datetime
 from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
+import threading
+import sys
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -35,6 +37,30 @@ LLM_CONFIG = {
     "api_key": "",  # API密钥，如果使用API
 }
 
+
+def input_with_timeout(prompt, timeout=10):
+    """
+    支持超时的输入函数，超时后返回 None
+    """
+    user_input = {}
+
+    def get_input():
+        try:
+            user_input['data'] = input(prompt)
+        except Exception:
+            user_input['data'] = None
+
+    input_thread = threading.Thread(target=get_input)
+    input_thread.daemon = True
+    input_thread.start()
+    input_thread.join(timeout)
+
+    return user_input.get('data')
+
+
+
+
+
 def setup_llm_config():
     """设置大语言模型配置"""
     print("\n" + "="*50)
@@ -45,9 +71,20 @@ def setup_llm_config():
     print("1. 本地模型 (Ollama)")
     print("2. 网络API (如OpenAI, Azure等)")
 
-    choice = ""
-    while choice not in ["1", "2"]:
-        choice = input("\n请输入选项 (1/2): ").strip()
+    # choice = ""
+    # while choice not in ["1", "2"]:
+    #     choice = input("\n请输入选项 (1/2): ").strip()
+
+    try:
+        choice = input_with_timeout("\n请输入选项 (1/2): ", timeout=10)
+        if not choice:
+            print("10秒内未输入，默认选择本地模型 (2)")
+            choice = "2"
+    except OSError:
+        print("检测到后台启动（nohup环境），默认选择本地模型 (12")
+        choice = "2"
+
+    choice = choice.strip()
 
     if choice == "1":
         LLM_CONFIG["model_type"] = "local"
