@@ -134,16 +134,17 @@ document.addEventListener('DOMContentLoaded', function () {
     const loadingId = addLoadingMessage();
     
     try {
-        const response = await fetch('/api/chat', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                message: message,
-                model: 'deepseek-r1:1.5b'
-            })
-        });
+        // const response = await fetch('/api/chat', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify({
+        //         message: message,
+        //         model: 'deepseek-r1:1.5b'
+        //     })
+        // });
+
         
         if (!response.ok) {
             throw new Error('网络请求失败');
@@ -248,10 +249,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     showLoading();
 
-    fetch('http://localhost:5000/predict', {
-      method: 'POST',
-      body: formData
-    })
+    // fetch('http://localhost:5000/predict', {
+    //   method: 'POST',
+    //   body: formData
+    // })
+      fetch('http://121.40.210.4:5000/predict', {
+          method: 'POST',
+          body: formData
+        })
       .then(res => res.json())
       .then(data => {
         hideLoading();
