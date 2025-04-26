@@ -747,7 +747,7 @@
                 <div class="knowledge-section">
                     <div class="section-header">
                         <i class="fas fa-lightbulb"></i>
-                        <span>每日护眼小贴士</span>
+                        <span>每日护齿小贴士</span>
                         <span class="update-tag">每日更新</span>
                     </div>
                     <div class="tips-list">
@@ -837,7 +837,7 @@
         </div>
     </div>
 
-    <script src="js/ai-diagnosis.js"></script>
+<!--    <script src="js/ai-diagnosis.js"></script>-->
     <script>
     // 等待页面加载完成后执行
     document.addEventListener('DOMContentLoaded', function() {
@@ -933,7 +933,8 @@
             }
 
             try {
-                const response = await fetch('http://127.0.0.1:5000/export_word', {
+                // const response = await fetch('http://127.0.0.1:5000/export_word', {
+                const response = await fetch('/export_word', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -977,7 +978,8 @@
             formData.append('file', uploadedFile);
 
             try {
-                const response = await fetch('http://127.0.0.1:5000/predict', {
+                // const response = await fetch('http://127.0.0.1:5000/predict', {
+                const response = await fetch('/predict', {
                     method: 'POST',
                     body: formData
                 });
@@ -1202,7 +1204,8 @@
             const loadingId = addLoadingMessage();
             
             try {
-                const response = await fetch('http://127.0.0.1:5000/chat_ollama', {
+                //const response = await fetch('http://127.0.0.1:5000/chat_ollama', {
+                const response = await fetch('/chat_ollama', {
                       method: 'POST',
                       headers: {
                         'Content-Type': 'application/json',
