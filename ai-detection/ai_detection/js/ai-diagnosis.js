@@ -144,8 +144,17 @@ document.addEventListener('DOMContentLoaded', function () {
         //         model: 'deepseek-r1:1.5b'
         //     })
         // });
+        const response = await fetch('/chat_ollama', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                prompt: message,
+                model: 'deepseek-r1:1.5b'
+            })
+        });
 
-        
         if (!response.ok) {
             throw new Error('网络请求失败');
         }
@@ -253,7 +262,7 @@ document.addEventListener('DOMContentLoaded', function () {
     //   method: 'POST',
     //   body: formData
     // })
-      fetch('http://121.40.210.4:5000/predict', {
+      fetch('/predict', {
           method: 'POST',
           body: formData
         })
