@@ -243,7 +243,9 @@
                 </div>
 
                 <div class="center-body">
-                    <div class="map" id="map"></div>
+                    <div class="map" id="map" style="position:relative;">
+                        <!-- 地图内容由js渲染 -->
+                    </div>
                 </div>
 
                 <div class="right-body">
@@ -1077,5 +1079,18 @@ async function exportWord() {
         alert('导出报告过程中发生错误');
     }
 }
+</script>
+
+<script>
+// 地图渲染代码后加上
+setTimeout(function() {
+    if (!document.getElementById('map-source-info')) {
+        var info = document.createElement('div');
+        info.id = 'map-source-info';
+        info.style.cssText = 'position:absolute;bottom:10px;left:0;width:100%;text-align:center;color:#888;font-size:14px;pointer-events:none;z-index:10;';
+        info.innerText = '地图来源：百度 地图审图号：GS (2021) 6026';
+        document.getElementById('map').appendChild(info);
+    }
+}, 500);
 </script>
 
